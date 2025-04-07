@@ -1,13 +1,4 @@
 import './App.css'
-import { NavLink, Link } from "react-router";
-import {
-  DatePicker as MuiDatePicker,
-  type DatePickerProps as MuiDatePickerProps,
-} from "@mui/x-date-pickers/DatePicker";
-import {
-  LocalizationProvider,
-} from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 function Confirm(){
     return (

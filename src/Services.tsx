@@ -3,13 +3,12 @@ import './App.css'
 import Checkbox from '@mui/material/Checkbox';
 import {
     DatePicker as MuiDatePicker,
-    type DatePickerProps as MuiDatePickerProps,
   } from "@mui/x-date-pickers/DatePicker";
   import {
     LocalizationProvider,
   } from "@mui/x-date-pickers";
   import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-  import { NavLink, Link } from "react-router";
+  import {Link } from "react-router";
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
