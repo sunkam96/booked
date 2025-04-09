@@ -37,5 +37,4 @@ const baseConfirmProps: ConfirmProps = {
   }
 }
 
-
 export {baseConfirmProps, baseServicesProps}

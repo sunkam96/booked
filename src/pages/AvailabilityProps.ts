@@ -5,3 +5,7 @@ export interface AvailabilityProps {
     buttonText: string;
     serviceItem: ServiceItemProps;
 }
+
+export interface AvailabilitySlot {
+    startTime: Date
+}

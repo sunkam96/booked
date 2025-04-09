@@ -185,3 +185,9 @@ body {
 .availability-date-picker {
   margin-top: 10%;
 }
+
+.available-slots-table {
+  text-align: center;
+  margin-top: 10%;
+  width: 70%
+}
