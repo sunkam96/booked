@@ -6,6 +6,15 @@ import CommonHeader from '../common/CommonHeader';
 import { CommonHeaderProps } from '../common/CommonHeaderProps';
 import CommonButton from '../common/CommonButton';
 import { CommonButtonProps } from '../common/CommonButtonProps';
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import {Link } from "react-router";
+
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -16,10 +25,10 @@ const headerProps: CommonHeaderProps = {
 
 
 function Services(props: ServicesProp){
-    const buttonProps: CommonButtonProps = {
-        buttonText: props.buttonText,
-        link: "/confirm",
-    }
+    // const buttonProps: CommonButtonProps = {
+    //     buttonText: props.buttonText,
+    //     link: "/confirm",
+    // }
     
     return (
         <div className="page-frame">
@@ -28,7 +37,7 @@ function Services(props: ServicesProp){
                 <ServicesLabel/>
                 <DateLabel {...props} />
                 <ServicesList {...props}/>
-                <CommonButton {...buttonProps}/>
+                {/* <CommonButton {...buttonProps}/> */}
             </div>
         </div>
 
@@ -55,26 +64,34 @@ function ServicesList(props: ServicesProp){
     return (
         <div className="services-list">
             {props.serviceItems.map(function(serviceItemProps: any, i: any){
-                return <ServiceItem key={i} {...serviceItemProps}/>
+                return <ServiceItemCard key={i} {...serviceItemProps}/>
             })}
         </div>
     )
 }
 
-function ServiceItem(props: ServiceItemProps){
+function ServiceItemCard(props: ServiceItemProps){
     return (
-        <div className="service-item">
-            <div className="service-item-left">
-                <Checkbox {...label} defaultChecked={props.checked} />
-            </div>
-            <div className="service-item-description">
-                <p><b>{props.service}</b><br/>{props.description}</p>
-            </div>
-            <div className="service-item-right">
-                <b>{props.price}</b>
-            </div>
-        </div>
+        <Link to="/confirm" className="service-item">
+            <Card sx={{minWidth: '100%', display: 'flex', flexDirection: 'row' }}>
+                <CardContent sx={{minWidth: '70%', display: 'flex', flexDirection: 'column' }}>
+                    <Typography gutterBottom sx={{ color: 'text.primary', fontSize: 18 }}>
+                    {props.service}
+                    </Typography>
+                    <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
+                    {props.description}
+                    </Typography>
+                </CardContent>
+                <CardContent sx={{flex: 1, marginRight: '5%'}}>
+                    <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
+                        {props.price}
+                    </Typography>
+                </CardContent>
+            </Card>
+        </Link>
+
     )
 }
+
 
 export default Services;
