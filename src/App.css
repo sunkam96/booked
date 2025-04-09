@@ -63,7 +63,7 @@ body {
   color: white;
 }
 
-.services-header-container {
+.header-container {
   margin-top: 10%;
   width: 80%;
   display: flex;
@@ -71,14 +71,20 @@ body {
   justify-content: space-evenly;
 }
 
-.services-header-text {
+.back-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header-text {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
 }
 
-.services-logo-container {
+.logo-container {
   display: flex;
   width: 90px;
   height: 90px;
@@ -90,7 +96,7 @@ body {
   background: url("./assets/2chainz.svg") lightgray 50% / contain no-repeat;
 }
 
-.services-label{
+.label{
   width: 254px;
   height: 35px;
   flex-shrink: 0;
@@ -154,4 +160,11 @@ body {
   border-radius: 15px;
   background: #0A0A0B;
   color: white;
+}
+
+.confirm-booking {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+  flex: 1;
 }

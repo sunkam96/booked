@@ -1,77 +1,61 @@
 import './App.css'
+import {ServicesProp, ServiceItemProps} from './ServicesProps';
 
 import Checkbox from '@mui/material/Checkbox';
-import {
-    DatePicker as MuiDatePicker,
-  } from "@mui/x-date-pickers/DatePicker";
-  import {
-    LocalizationProvider,
-  } from "@mui/x-date-pickers";
-  import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-  import {Link } from "react-router";
+import {Link } from "react-router";
+import CommonHeader from './CommonHeader';
+import { CommonHeaderProps } from './CommonHeaderProps';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
-function Services(){
+const headerProps: CommonHeaderProps = {
+    backLink: "/",
+    headerText: "2Chainz"
+}
+
+function Services(props: ServicesProp){
     return (
       <div className="page-container">
-        <ServicesHeaderContainer/>
+        <CommonHeader {...headerProps}/>
         <ServicesLabel/>
-        <ServicesList/>
-        <BookNowButton buttonText="Book Now"/>
+        <DateLabel {...props} />
+        <ServicesList {...props}/>
+        <BookNowButton buttonText={props.buttonText}/>
       </div>
-    )
-}
-
-function ServicesHeaderContainer(){
-    return (
-        <div className="services-header-container">
-            <SerivcesLogo/>
-            <ServicesHeader headerText="2Chainz"/>
-        </div>
-    )
-}
-
-function SerivcesLogo(){
-    return (
-      <div className="services-logo-container">
-        test
-      </div>
-    )
-}
-
-function ServicesHeader(props:any){
-    return (
-        <div className="services-header-text">
-            <p><b>{props.headerText}</b></p>
-        </div>
     )
 }
 
 function ServicesLabel(){
     return (
-        <div className="services-label">
+        <div className="label">
             <p>Services</p>
         </div>
     )
 }
 
-function ServicesList(){
+function DateLabel(props: ServicesProp){
     return (
-        <div className="services-list">
-            <ChangeDatePicker/>
-            <ServiceItem service="Haircut" description="Adult haircut" price={"$25"} defaultChecked={true}/>
-            <ServiceItem service="Haircut and Trim" description="Adult haircut with beard trimming" price={"$35"}/>
-            <ServiceItem service="Color" description="Coloring and perm" price={"$40"}/>
+        <div className="date-label">
+            <p>{props.date.toDateString()}</p>
         </div>
     )
 }
 
-function ServiceItem(props: any){
+function ServicesList(props: ServicesProp){
+    return (
+        <div className="services-list">
+            {props.serviceItems.map(function(serviceItemProps){
+                return <ServiceItem {...serviceItemProps}/>
+            })}
+        </div>
+    )
+}
+
+function ServiceItem(props: ServiceItemProps){
     return (
         <div className="service-item">
             <div className="service-item-left">
-                <Checkbox {...label} defaultChecked={props.defaultChecked} />
+                <Checkbox {...label} defaultChecked={props.checked} />
             </div>
             <div className="service-item-description">
                 <p><b>{props.service}</b><br/>{props.description}</p>
@@ -83,15 +67,6 @@ function ServiceItem(props: any){
     )
 }
 
-function ChangeDatePicker(){
-    return (
-      <div className="date-picker">
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <MuiDatePicker label="Change Date" />
-              </LocalizationProvider>
-      </div>
-    )
-}
 
 function BookNowButton(props: any){
     return(

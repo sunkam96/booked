@@ -1,47 +1,67 @@
 import './App.css'
+import { ConfirmProps } from './ConfirmProps'
+import CommonHeader from './CommonHeader';
+import { CommonHeaderProps } from './CommonHeaderProps';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import {Link } from "react-router";
 
-function Confirm(){
+const headerProps: CommonHeaderProps = {
+    backLink: "/services",
+    headerText: "2Chainz"
+}
+
+function Confirm(props: ConfirmProps){
     return (
       <div className="page-container">
-        <ConfirmHeaderContainer/>
-        <ConfirmDescription service="Adult haircut" date="April 11th, 2025 at 3:30pm"/>
+        <CommonHeader {...headerProps}/>
+        <ConfirmLabel/>
+        <ConfirmBooking {...props} />
+        <BookNowButton buttonText={props.buttonText}/>
       </div>
     )
 }
 
-function ConfirmHeaderContainer(){
+function ConfirmLabel(){
     return (
-        <div className="services-header-container">
-            <ConfirmLogo/>
-            <ConfirmHeader headerText="2Chainz"/>
+        <div className="label">
+            <p>Confirm Booking</p>
         </div>
     )
 }
 
-function ConfirmLogo(){
-    return (
-      <div className="services-logo-container">
-        test
-      </div>
-    )
-}
 
-function ConfirmHeader(props:any){
+function ConfirmBooking(props: ConfirmProps){
     return (
-        <div className="services-header-text">
-            <p><b>{props.headerText}</b></p>
+        <div className="confirm-booking">
+            <p><b>Service: </b>{props.serviceItem.service}</p>
+            <p><b>Date: </b>{props.date.toDateString()}</p>
+            <Box
+                component="form"
+                sx={{ '& > :not(style)': { m: 1, width: '25ch' }, display: 'flex', flexDirection: 'column', marginTop: '5%' }}
+                noValidate
+                autoComplete="off"
+                >
+                <TextField id="firstName" label="First Name" variant="outlined" />
+                <TextField id="lastName" label="Last Name" variant="outlined" />
+                <TextField id="email" label="Email" variant="outlined" />
+                <TextField id="phone" label="Phone" variant="outlined" />
+            </Box>
         </div>
     )
 }
 
-function ConfirmDescription(props: any){
-    return (
-        <div className="confirm-description">
-            <p><b>Your appointment for been confirmed! </b></p>
-            <p><b>Service: </b>{props.service}</p>
-            <p><b>Date: </b>{props.date}</p>
+function BookNowButton(props: any){
+    return(
+        <div className="book-now-button-continer">
+            <Link to="/booked">
+                <button className="book-now-button">{props.buttonText}</button>
+            </Link>
         </div>
+
     )
 }
+
+
 
 export default Confirm
