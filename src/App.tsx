@@ -8,6 +8,13 @@ import {
   LocalizationProvider,
 } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import CommonButton from './common/CommonButton';
+import { CommonButtonProps } from './common/CommonButtonProps';
+
+const buttonProps: CommonButtonProps = {
+  buttonText: "See Services",
+  link: "/services",
+}
 
 function App() {
 
@@ -24,7 +31,7 @@ function HomePage(){
       <Logo/>
       <Header/>
       <DatePicker/>
-      <SeeServicesButton buttonText="Check Availability" />
+      <CommonButton {...buttonProps} />
     </div>
   )
 }
@@ -50,16 +57,6 @@ function DatePicker(){
       <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <MuiDatePicker label="Select Date" slotProps={{ textField: { fullWidth: true } }} />
             </LocalizationProvider>
-    </div>
-  )
-}
-
-function SeeServicesButton(props: any){
-  return(
-    <div className="check-availability-button-container">
-      <Link to="/services">
-          <button className="check-availability-button">{props.buttonText}</button>
-      </Link>
     </div>
   )
 }

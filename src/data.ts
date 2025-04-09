@@ -1,5 +1,5 @@
-import {ServicesProp} from './ServicesProps.ts'
-import { ConfirmProps } from './ConfirmProps.ts'
+import {ServicesProp} from './pages/ServicesProps.ts'
+import { ConfirmProps } from './pages/ConfirmProps.ts'
 
 const baseServicesProps: ServicesProp = {
   date: new Date(1744639200 * 1000),

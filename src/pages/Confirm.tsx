@@ -1,10 +1,12 @@
-import './App.css'
+import '../App.css'
 import { ConfirmProps } from './ConfirmProps'
-import CommonHeader from './CommonHeader';
-import { CommonHeaderProps } from './CommonHeaderProps';
+import CommonHeader from '../common/CommonHeader';
+import { CommonHeaderProps } from '../common/CommonHeaderProps';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import {Link } from "react-router";
+import CommonButton from '../common/CommonButton';
+import { CommonButtonProps } from '../common/CommonButtonProps';
 
 const headerProps: CommonHeaderProps = {
     backLink: "/services",
@@ -12,12 +14,16 @@ const headerProps: CommonHeaderProps = {
 }
 
 function Confirm(props: ConfirmProps){
+    const buttonProps: CommonButtonProps = {
+        buttonText: props.buttonText,
+        link: "/booked",
+    }
     return (
       <div className="page-container">
         <CommonHeader {...headerProps}/>
         <ConfirmLabel/>
         <ConfirmBooking {...props} />
-        <BookNowButton buttonText={props.buttonText}/>
+        <CommonButton {...buttonProps}/>
       </div>
     )
 }
@@ -50,18 +56,6 @@ function ConfirmBooking(props: ConfirmProps){
         </div>
     )
 }
-
-function BookNowButton(props: any){
-    return(
-        <div className="book-now-button-continer">
-            <Link to="/booked">
-                <button className="book-now-button">{props.buttonText}</button>
-            </Link>
-        </div>
-
-    )
-}
-
 
 
 export default Confirm

@@ -1,7 +1,7 @@
 import App from './App.tsx'
-import Services from './Services.tsx'
-import Confirm from './Confirm.tsx'
-import Booked from './Booked.tsx'
+import Services from './pages/Services.tsx'
+import Confirm from './pages/Confirm.tsx'
+import Booked from './pages/Booked.tsx'
 
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router"

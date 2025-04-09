@@ -1,6 +1,6 @@
-import './App.css'
-import { CommonHeaderProps } from './CommonHeaderProps';
-import CommonHeader from './CommonHeader';
+import '../App.css'
+import { CommonHeaderProps } from '../common/CommonHeaderProps';
+import CommonHeader from '../common/CommonHeader';
 
 const headerProps: CommonHeaderProps = {
     backLink: "/confirm",

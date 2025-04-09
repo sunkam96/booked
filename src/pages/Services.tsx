@@ -1,10 +1,12 @@
-import './App.css'
-import {ServicesProp, ServiceItemProps} from './ServicesProps';
+import '../App.css'
+import {ServicesProp, ServiceItemProps} from '../ServicesProps';
 
 import Checkbox from '@mui/material/Checkbox';
 import {Link } from "react-router";
-import CommonHeader from './CommonHeader';
-import { CommonHeaderProps } from './CommonHeaderProps';
+import CommonHeader from '../common/CommonHeader';
+import { CommonHeaderProps } from '../common/CommonHeaderProps';
+import CommonButton from '../common/CommonButton';
+import { CommonButtonProps } from '../common/CommonButtonProps';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -13,14 +15,20 @@ const headerProps: CommonHeaderProps = {
     headerText: "2Chainz"
 }
 
+
 function Services(props: ServicesProp){
+    const buttonProps: CommonButtonProps = {
+        buttonText: props.buttonText,
+        link: "/confirm",
+    }
+    
     return (
       <div className="page-container">
         <CommonHeader {...headerProps}/>
         <ServicesLabel/>
         <DateLabel {...props} />
         <ServicesList {...props}/>
-        <BookNowButton buttonText={props.buttonText}/>
+        <CommonButton {...buttonProps}/>
       </div>
     )
 }
@@ -44,8 +52,8 @@ function DateLabel(props: ServicesProp){
 function ServicesList(props: ServicesProp){
     return (
         <div className="services-list">
-            {props.serviceItems.map(function(serviceItemProps){
-                return <ServiceItem {...serviceItemProps}/>
+            {props.serviceItems.map(function(serviceItemProps, i){
+                return <ServiceItem key={i} {...serviceItemProps}/>
             })}
         </div>
     )
