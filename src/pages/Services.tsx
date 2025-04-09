@@ -57,7 +57,7 @@ function ServicesList(props: ServicesProp){
 
 function ServiceItemCard(props: ServiceItemProps){
     return (
-        <Link to="/confirm" className="service-item">
+        <Link to="/availability" className="service-item">
             <Card sx={{minWidth: '100%', display: 'flex', flexDirection: 'row' }}>
                 <CardContent sx={{minWidth: '70%', display: 'flex', flexDirection: 'column' }}>
                     <Typography gutterBottom sx={{ color: 'text.primary', fontSize: 18 }}>

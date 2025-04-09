@@ -2,6 +2,7 @@ import App from './App.tsx'
 import Services from './pages/Services.tsx'
 import Confirm from './pages/Confirm.tsx'
 import Booked from './pages/Booked.tsx'
+import Availability from './pages/Availability.tsx'
 
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router"
@@ -16,6 +17,7 @@ ReactDOM.createRoot(root!).render(
       <Route path="/" element={<Services {...baseServicesProps} />} />
       <Route path="/home" element={<App />} />  {/* old home page keeping just in case */}
       <Route path="/services" element={<Services {...baseServicesProps} />} />
+      <Route path="/availability" element={<Availability/>} />
       <Route path="/confirm" element={<Confirm {...baseConfirmProps}/>} />
       <Route path="/booked" element={<Booked/>} />
     </Routes>

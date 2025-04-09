@@ -181,3 +181,7 @@ body {
   margin-top: 5%;
   flex: 1;
 }
+
+.availability-date-picker {
+  margin-top: 10%;
+}
