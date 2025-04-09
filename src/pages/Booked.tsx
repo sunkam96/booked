@@ -3,8 +3,9 @@ import { CommonHeaderProps } from '../common/CommonHeaderProps';
 import CommonHeader from '../common/CommonHeader';
 
 const headerProps: CommonHeaderProps = {
+    showBack: true,
     backLink: "/confirm",
-    headerText: "2Chainz"
+    headerText: "2Chainz",
 }
 
 function Booked(){

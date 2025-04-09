@@ -13,7 +13,8 @@ const root = document.getElementById("root");
 ReactDOM.createRoot(root!).render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />} />
+      <Route path="/" element={<Services {...baseServicesProps} />} />
+      <Route path="/home" element={<App />} />  {/* old home page keeping just in case */}
       <Route path="/services" element={<Services {...baseServicesProps} />} />
       <Route path="/confirm" element={<Confirm {...baseConfirmProps}/>} />
       <Route path="/booked" element={<Booked/>} />

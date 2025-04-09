@@ -1,35 +1,21 @@
 import '../App.css'
 import {ServicesProp, ServiceItemProps} from './ServicesProps';
 
-import Checkbox from '@mui/material/Checkbox';
 import CommonHeader from '../common/CommonHeader';
 import { CommonHeaderProps } from '../common/CommonHeaderProps';
-import CommonButton from '../common/CommonButton';
-import { CommonButtonProps } from '../common/CommonButtonProps';
-import * as React from 'react';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {Link } from "react-router";
 
-
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-
 const headerProps: CommonHeaderProps = {
+    showBack: false,
     backLink: "/",
     headerText: "2Chainz"
 }
 
-
 function Services(props: ServicesProp){
-    // const buttonProps: CommonButtonProps = {
-    //     buttonText: props.buttonText,
-    //     link: "/confirm",
-    // }
-    
+
     return (
         <div className="page-frame">
             <div className="page-container">
@@ -37,7 +23,6 @@ function Services(props: ServicesProp){
                 <ServicesLabel/>
                 <DateLabel {...props} />
                 <ServicesList {...props}/>
-                {/* <CommonButton {...buttonProps}/> */}
             </div>
         </div>
 

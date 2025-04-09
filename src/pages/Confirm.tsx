@@ -8,6 +8,7 @@ import CommonButton from '../common/CommonButton';
 import { CommonButtonProps } from '../common/CommonButtonProps';
 
 const headerProps: CommonHeaderProps = {
+    showBack: true,
     backLink: "/services",
     headerText: "2Chainz"
 }

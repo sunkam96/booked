@@ -6,16 +6,20 @@ import { CommonHeaderProps } from './CommonHeaderProps';
 function CommonHeader(props: CommonHeaderProps){
     return (
         <div className="header-container">
-            <BackButton {...props}/>
-            <CommonLogo/>
-            <CommonHeaderText {...props}/>
+            <div className="header-left">
+                <BackButton {...props}/>
+            </div>
+            <div className="header-right">
+                <CommonLogo/>
+                <CommonHeaderText {...props}/>
+            </div>
         </div>
     )
 }
 
 function BackButton(props: CommonHeaderProps){
     return (
-        <div className="back-button">
+        <div className={props.showBack?"back-button": "back-button hide-visibility"}>
             <Link to={props.backLink}>
                 <ArrowBackIcon style={{ color: 'black' }}/>
             </Link>
