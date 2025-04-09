@@ -75,17 +75,4 @@ function ServiceItem(props: ServiceItemProps){
     )
 }
 
-
-function BookNowButton(props: any){
-    return(
-        <div className="book-now-button-continer">
-            <Link to="/confirm">
-                <button className="book-now-button">{props.buttonText}</button>
-            </Link>
-        </div>
-
-    )
-}
-
-
 export default Services;

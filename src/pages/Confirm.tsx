@@ -13,10 +13,15 @@ const headerProps: CommonHeaderProps = {
     headerText: "2Chainz"
 }
 
+const bookAppointment = (event: any) => {
+    console.log("booking the appointment");
+}
+
 function Confirm(props: ConfirmProps){
     const buttonProps: CommonButtonProps = {
         buttonText: props.buttonText,
         link: "/booked",
+        onClick: bookAppointment,
     }
     return (
       <div className="page-container">
