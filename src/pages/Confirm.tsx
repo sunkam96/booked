@@ -4,7 +4,6 @@ import CommonHeader from '../common/CommonHeader';
 import { CommonHeaderProps } from '../common/CommonHeaderProps';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import {Link } from "react-router";
 import CommonButton from '../common/CommonButton';
 import { CommonButtonProps } from '../common/CommonButtonProps';
 
@@ -14,7 +13,7 @@ const headerProps: CommonHeaderProps = {
 }
 
 const bookAppointment = (event: any) => {
-    console.log("booking the appointment");
+    console.log("booking the appointment", event);
 }
 
 function Confirm(props: ConfirmProps){
@@ -24,12 +23,15 @@ function Confirm(props: ConfirmProps){
         onClick: bookAppointment,
     }
     return (
-      <div className="page-container">
-        <CommonHeader {...headerProps}/>
-        <ConfirmLabel/>
-        <ConfirmBooking {...props} />
-        <CommonButton {...buttonProps}/>
-      </div>
+        <div className="page-frame">
+            <div className="page-container">
+                <CommonHeader {...headerProps}/>
+                <ConfirmLabel/>
+                <ConfirmBooking {...props} />
+                <CommonButton {...buttonProps}/>
+            </div>
+        </div>
+
     )
 }
 

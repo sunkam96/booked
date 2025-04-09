@@ -9,10 +9,13 @@ const headerProps: CommonHeaderProps = {
 
 function Booked(){
     return (
-      <div className="page-container">
-        <CommonHeader {...headerProps}/>
-        <BookedLabel/>
+      <div className="page-frame">
+        <div className="page-container">
+          <CommonHeader {...headerProps}/>
+          <BookedLabel/>
+        </div>
       </div>
+
     )
 }
 

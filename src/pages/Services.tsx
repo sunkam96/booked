@@ -1,8 +1,7 @@
 import '../App.css'
-import {ServicesProp, ServiceItemProps} from '../ServicesProps';
+import {ServicesProp, ServiceItemProps} from './ServicesProps';
 
 import Checkbox from '@mui/material/Checkbox';
-import {Link } from "react-router";
 import CommonHeader from '../common/CommonHeader';
 import { CommonHeaderProps } from '../common/CommonHeaderProps';
 import CommonButton from '../common/CommonButton';
@@ -23,13 +22,16 @@ function Services(props: ServicesProp){
     }
     
     return (
-      <div className="page-container">
-        <CommonHeader {...headerProps}/>
-        <ServicesLabel/>
-        <DateLabel {...props} />
-        <ServicesList {...props}/>
-        <CommonButton {...buttonProps}/>
-      </div>
+        <div className="page-frame">
+            <div className="page-container">
+                <CommonHeader {...headerProps}/>
+                <ServicesLabel/>
+                <DateLabel {...props} />
+                <ServicesList {...props}/>
+                <CommonButton {...buttonProps}/>
+            </div>
+        </div>
+
     )
 }
 
@@ -52,7 +54,7 @@ function DateLabel(props: ServicesProp){
 function ServicesList(props: ServicesProp){
     return (
         <div className="services-list">
-            {props.serviceItems.map(function(serviceItemProps, i){
+            {props.serviceItems.map(function(serviceItemProps: any, i: any){
                 return <ServiceItem key={i} {...serviceItemProps}/>
             })}
         </div>

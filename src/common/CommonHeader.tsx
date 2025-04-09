@@ -1,7 +1,7 @@
 import '../App.css'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import {Link } from "react-router";
-import { CommonHeaderProps } from '../CommonHeaderProps';
+import { CommonHeaderProps } from './CommonHeaderProps';
 
 function CommonHeader(props: CommonHeaderProps){
     return (
