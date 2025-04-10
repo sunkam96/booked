@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import {Link } from "react-router";
 
 
 const headerProps: CommonHeaderProps = {
@@ -51,7 +52,9 @@ function ConfirmBooking(props: ConfirmProps){
                 <TextField id="lastName" label="Last Name" variant="outlined" />
                 <TextField id="email" label="Email" variant="outlined" />
                 <TextField id="phone" label="Phone" variant="outlined" />
-                <Button variant="contained">Confirm</Button>
+                <Link to="/booked">
+                    <Button variant="contained">Confirm</Button>
+                </Link>
             </Box>
         </div>
     )
