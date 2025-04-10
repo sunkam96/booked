@@ -1,3 +1,5 @@
+import { AppointmentBookingData } from "../common/AppointmentBooking";
+
 export interface ServiceItemProps {
     service: string;
     description: string;
@@ -6,7 +8,7 @@ export interface ServiceItemProps {
 }
 
 export interface ServicesProp {
-    date: Date;
+    bookingData: AppointmentBookingData;
     buttonText: string;
     serviceItems: ServiceItemProps[];
 }

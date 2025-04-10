@@ -6,12 +6,13 @@ import dayjs from 'dayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { AvailabilitySlot } from './AvailabilityProps';
+import { AvailabilitySlot } from '../common/AppointmentBooking';
 import { useState } from 'react';
 
 import {Link } from "react-router";
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
+import { AvailabilityProps } from './AvailabilityProps';
 
 
 const headerProps: CommonHeaderProps = {
@@ -25,18 +26,23 @@ function fetchAvailabilitySlots(date: Date) : AvailabilitySlot[] {
     const slots: AvailabilitySlot[] = [
         {
             startTime: new Date(date.setHours(10, 0, 0, 0)),
+            endTime: new Date(date.setHours(10, 30, 0, 0))
         },
         {
-            startTime: new Date(date.setHours(11, 0, 0, 0)),
+            startTime: new Date(date.setHours(10, 30, 0, 0)),
+            endTime: new Date(date.setHours(11, 0, 0, 0)),
         },
         {
             startTime: new Date(date.setHours(13, 0, 0, 0)),
+            endTime: new Date(date.setHours(14, 30, 0, 0)),
         },
         {
-            startTime: new Date(date.setHours(14, 0, 0, 0)),
+            startTime: new Date(date.setHours(14, 30, 0, 0)),
+            endTime: new Date(date.setHours(15, 30, 0, 0)),
         },
         {
-            startTime: new Date(date.setHours(15, 0, 0, 0)),
+            startTime: new Date(date.setHours(15, 30, 0, 0)),
+            endTime: new Date(date.setHours(16, 0, 0, 0)),
         },
     ]
     
@@ -44,8 +50,8 @@ function fetchAvailabilitySlots(date: Date) : AvailabilitySlot[] {
 }
   
 
-function Availability(){
-    const [date, setDate] = useState(new Date());
+function Availability(props: AvailabilityProps){
+    const [date, setDate] = useState(props.bookingData.selectedDate? props.bookingData.selectedDate: new Date());
 
     return (
       <div className="page-frame">
@@ -88,7 +94,7 @@ function SlotsTable(props: any){
                 {slots.map(function(slot: AvailabilitySlot, i: number){
                     return (
                         <Link key={i}  to="/confirm">
-                            <Chip key={i} label={slot.startTime.toLocaleTimeString() + " - " + slot.startTime.toLocaleTimeString()} variant="outlined"/>
+                            <Chip key={i} label={slot.startTime.toLocaleTimeString() + " - " + slot.endTime.toLocaleTimeString()} variant="outlined"/>
                         </Link>
                     )
                 })}

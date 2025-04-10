@@ -1,7 +1,8 @@
+import { AppointmentBookingData } from "../common/AppointmentBooking";
 import { ServiceItemProps } from "./ServicesProps";
 
 export interface ConfirmProps {
-    date: Date;
+    bookingData: AppointmentBookingData;
     buttonText: string;
     serviceItem: ServiceItemProps;
 }

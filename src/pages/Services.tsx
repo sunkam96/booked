@@ -21,7 +21,6 @@ function Services(props: ServicesProp){
             <div className="page-container">
                 <CommonHeader {...headerProps}/>
                 <ServicesLabel/>
-                <DateLabel {...props} />
                 <ServicesList {...props}/>
             </div>
         </div>
@@ -33,14 +32,6 @@ function ServicesLabel(){
     return (
         <div className="label">
             <p>Services</p>
-        </div>
-    )
-}
-
-function DateLabel(props: ServicesProp){
-    return (
-        <div className="date-label">
-            <p>{props.date.toDateString()}</p>
         </div>
     )
 }

@@ -4,32 +4,23 @@ import CommonHeader from '../common/CommonHeader';
 import { CommonHeaderProps } from '../common/CommonHeaderProps';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import CommonButton from '../common/CommonButton';
-import { CommonButtonProps } from '../common/CommonButtonProps';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+
 
 const headerProps: CommonHeaderProps = {
     showBack: true,
-    backLink: "/services",
+    backLink: "/availability",
     headerText: "2Chainz"
 }
 
-const bookAppointment = (event: any) => {
-    console.log("booking the appointment", event);
-}
-
 function Confirm(props: ConfirmProps){
-    const buttonProps: CommonButtonProps = {
-        buttonText: props.buttonText,
-        link: "/booked",
-        onClick: bookAppointment,
-    }
     return (
         <div className="page-frame">
             <div className="page-container">
                 <CommonHeader {...headerProps}/>
                 <ConfirmLabel/>
                 <ConfirmBooking {...props} />
-                <CommonButton {...buttonProps}/>
             </div>
         </div>
 
@@ -48,18 +39,19 @@ function ConfirmLabel(){
 function ConfirmBooking(props: ConfirmProps){
     return (
         <div className="confirm-booking">
-            <p><b>Service: </b>{props.serviceItem.service}</p>
-            <p><b>Date: </b>{props.date.toDateString()}</p>
             <Box
                 component="form"
-                sx={{ '& > :not(style)': { m: 1, width: '25ch' }, display: 'flex', flexDirection: 'column', marginTop: '5%' }}
+                sx={{ '& > :not(style)': { m: 1, width: '100%' }, display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '5%'}}
                 noValidate
                 autoComplete="off"
                 >
+                <Typography variant="body2" component="div">Service: {props.serviceItem.service}</Typography>
+                <Typography variant="body2" component="div">Time: {props.bookingData.selectedDate!.toDateString()}</Typography>
                 <TextField id="firstName" label="First Name" variant="outlined" />
                 <TextField id="lastName" label="Last Name" variant="outlined" />
                 <TextField id="email" label="Email" variant="outlined" />
                 <TextField id="phone" label="Phone" variant="outlined" />
+                <Button variant="contained">Confirm</Button>
             </Box>
         </div>
     )

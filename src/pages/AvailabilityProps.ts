@@ -1,11 +1,7 @@
+import { AppointmentBookingData } from "../common/AppointmentBooking";
 import { ServiceItemProps } from "./ServicesProps";
 
 export interface AvailabilityProps {
-    date: Date;
-    buttonText: string;
+    bookingData: AppointmentBookingData,
     serviceItem: ServiceItemProps;
-}
-
-export interface AvailabilitySlot {
-    startTime: Date
 }
