@@ -1,8 +1,8 @@
-import { AppointmentBookingData } from "../common/AppointmentBooking";
-import { ServiceItemProps } from "./ServicesProps";
+import { BookingData } from "../common/BookingData";
+import { ServiceItem } from "./ServicesProps";
 
 export interface ConfirmProps {
-    bookingData: AppointmentBookingData;
+    bookingData: BookingData;
     buttonText: string;
-    serviceItem: ServiceItemProps;
+    serviceItem: ServiceItem;
 }

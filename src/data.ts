@@ -1,15 +1,13 @@
 import {ServicesProp} from './pages/ServicesProps.ts'
 import { ConfirmProps } from './pages/ConfirmProps.ts'
-import { AppointmentBookingData } from './common/AppointmentBooking.ts'
+import { BookingData } from './common/BookingData.ts'
 import { AvailabilityProps } from './pages/AvailabilityProps.ts'
 
 
-const initialAppointmentBookingData: AppointmentBookingData = {
-  selectedDate: new Date(),
-}
+const initialBookingData: BookingData = new BookingData(new Date());
 
 const baseServicesProps: ServicesProp = {
-  bookingData: initialAppointmentBookingData,
+  bookingData: initialBookingData,
   buttonText: "Book Now",
   serviceItems: [
     {
@@ -34,7 +32,7 @@ const baseServicesProps: ServicesProp = {
 }
 
 const baseConfirmProps: ConfirmProps = {
-  bookingData: initialAppointmentBookingData,
+  bookingData: initialBookingData,
   buttonText: "Confirm",
   serviceItem: {
     service: "Haircut",
@@ -45,7 +43,7 @@ const baseConfirmProps: ConfirmProps = {
 }
 
 const baseAvailabilityProps: AvailabilityProps = {
-  bookingData: initialAppointmentBookingData,
+  bookingData: initialBookingData,
   serviceItem: {
     service: "Haircut",
     description: "Adult haircut",
@@ -54,4 +52,4 @@ const baseAvailabilityProps: AvailabilityProps = {
   }
 }
 
-export {baseConfirmProps, baseServicesProps, baseAvailabilityProps}
+export {initialBookingData, baseConfirmProps, baseServicesProps, baseAvailabilityProps}

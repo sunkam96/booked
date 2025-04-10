@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { AvailabilitySlot } from '../common/AppointmentBooking';
+import { AvailabilitySlot } from '../common/BookingData';
 import { useState } from 'react';
 
 import {Link } from "react-router";
@@ -52,7 +52,7 @@ function fetchAvailabilitySlots(date: Date) : AvailabilitySlot[] {
 
 function Availability(props: AvailabilityProps){
     const [date, setDate] = useState(props.bookingData.selectedDate? props.bookingData.selectedDate: new Date());
-
+    console.log("The availability props are", props);
     return (
       <div className="page-frame">
         <div className="page-container">

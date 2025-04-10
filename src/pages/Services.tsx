@@ -15,7 +15,6 @@ const headerProps: CommonHeaderProps = {
 }
 
 function Services(props: ServicesProp){
-
     return (
         <div className="page-frame">
             <div className="page-container">
@@ -39,8 +38,8 @@ function ServicesLabel(){
 function ServicesList(props: ServicesProp){
     return (
         <div className="services-list">
-            {props.serviceItems.map(function(serviceItemProps: any, i: any){
-                return <ServiceItemCard key={i} {...serviceItemProps}/>
+            {props.serviceItems.map(function(serviceItem: any, i: any){
+                return <ServiceItemCard key={i} {...serviceItem}/>
             })}
         </div>
     )

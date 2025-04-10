@@ -1,7 +1,7 @@
-import { AppointmentBookingData } from "../common/AppointmentBooking";
-import { ServiceItemProps } from "./ServicesProps";
+import { BookingData } from "../common/BookingData";
+import { ServiceItem } from "./ServicesProps";
 
 export interface AvailabilityProps {
-    bookingData: AppointmentBookingData,
-    serviceItem: ServiceItemProps;
+    bookingData: BookingData,
+    serviceItem: ServiceItem;
 }

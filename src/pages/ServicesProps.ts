@@ -1,6 +1,6 @@
-import { AppointmentBookingData } from "../common/AppointmentBooking";
+import { BookingData } from "../common/BookingData";
 
-export interface ServiceItemProps {
+export interface ServiceItem {
     service: string;
     description: string;
     price: string;
@@ -8,7 +8,7 @@ export interface ServiceItemProps {
 }
 
 export interface ServicesProp {
-    bookingData: AppointmentBookingData;
+    bookingData: BookingData;
     buttonText: string;
-    serviceItems: ServiceItemProps[];
+    serviceItems: ServiceItem[];
 }
