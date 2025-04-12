@@ -8,22 +8,21 @@ const headerProps: CommonHeaderProps = {
     headerText: "2Chainz",
 }
 
-function Booked(){
+function Booked(props: any){
     return (
       <div className="page-frame">
         <div className="page-container">
           <CommonHeader {...headerProps}/>
-          <BookedLabel/>
+          <BookedLabel bookingData={props.bookingData} setBookingData={props.setBookingData}/>
         </div>
       </div>
-
     )
 }
 
-function BookedLabel(){
+function BookedLabel(props: any){
   return (
       <div className="label">
-          <p>Your appointment is booked!</p>
+          <p>Your appointment for {props.bookingData.serviceItem.service} is booked!</p>
       </div>
   )
 }

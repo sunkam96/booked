@@ -1,35 +1,26 @@
-import './App.css'
-import CommonButton from './common/CommonButton';
-import { CommonButtonProps } from './model';
+import Services from './pages/Services.tsx'
+import Confirm from './pages/Confirm.tsx'
+import Booked from './pages/Booked.tsx'
+import Availability from './pages/Availability.tsx'
+import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from "react-router"
+import { BookingData } from './model.ts'
+import './index.css'
 
-const buttonProps: CommonButtonProps = {
-  buttonText: "See Services",
-  link: "/services",
-}
+
 
 function App() {
+  const [bookingData, setBookingData] = useState(new BookingData())
   return (
-    <div className="page-frame">
-      <div className="page-container">
-        <Logo/>
-        <Header/>
-        <CommonButton {...buttonProps} />
-      </div>
-    </div>
-  )
-}
-
-function Logo(){
-  return(
-    <div className="logo-container"></div>
-  )
-}
-
-function Header(){
-  return(
-    <p className="header">
-      <b>2Chainz</b>
-    </p>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Services bookingData={bookingData} setBookingData={setBookingData}/>} />
+        <Route path="/services" element={<Services bookingData={bookingData} setBookingData={setBookingData} />} />
+        <Route path="/availability" element={<Availability bookingData={bookingData} setBookingData={setBookingData} />} />
+        <Route path="/confirm" element={<Confirm bookingData={bookingData} setBookingData={setBookingData}/>} />
+        <Route path="/booked" element={<Booked bookingData={bookingData} setBookingData={setBookingData}/>} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 

@@ -1,5 +1,5 @@
 import '../App.css'
-import { ConfirmProps, CommonHeaderProps } from '../model'
+import {CommonHeaderProps} from '../model'
 import CommonHeader from '../common/CommonHeader';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -14,13 +14,14 @@ const headerProps: CommonHeaderProps = {
     headerText: "2Chainz"
 }
 
-function Confirm(props: ConfirmProps){
+function Confirm(props: any){
     return (
         <div className="page-frame">
             <div className="page-container">
                 <CommonHeader {...headerProps}/>
                 <ConfirmLabel/>
-                <ConfirmBooking {...props} />
+                <ConfirmBooking bookingData={props.bookingData} setBookingData={props.setBookingData}/>
+                {/* {props.bookingData.toString()} */}
             </div>
         </div>
 
@@ -35,8 +36,7 @@ function ConfirmLabel(){
     )
 }
 
-
-function ConfirmBooking(props: ConfirmProps){
+function ConfirmBooking(props: any){
     return (
         <div className="confirm-booking">
             <Box
@@ -45,7 +45,7 @@ function ConfirmBooking(props: ConfirmProps){
                 noValidate
                 autoComplete="off"
                 >
-                <Typography variant="body2" component="div">Service: {props.serviceItem.service}</Typography>
+                <Typography variant="body2" component="div">Service: {props.bookingData.serviceItem.service}</Typography>
                 <Typography variant="body2" component="div">Time: {props.bookingData.selectedDate!.toDateString()}</Typography>
                 <TextField id="firstName" label="First Name" variant="outlined" />
                 <TextField id="lastName" label="Last Name" variant="outlined" />
