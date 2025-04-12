@@ -1,18 +1,17 @@
 import '../App.css'
-import { CommonHeaderProps } from '../common/CommonHeaderProps';
 import CommonHeader from '../common/CommonHeader';
 
 import dayjs from 'dayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { AvailabilitySlot } from '../common/BookingData';
+import { AvailabilitySlot, CommonHeaderProps } from '../model';
 import { useState } from 'react';
 
 import {Link } from "react-router";
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
-import { AvailabilityProps } from './AvailabilityProps';
+import { AvailabilityProps } from '../model';
 
 
 const headerProps: CommonHeaderProps = {

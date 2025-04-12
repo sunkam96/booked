@@ -1,8 +1,7 @@
 import '../App.css'
-import {ServicesProp, ServiceItemProps} from './ServicesProps';
+import {ServicesProp, CommonHeaderProps, ServiceItem} from '../model';
 
 import CommonHeader from '../common/CommonHeader';
-import { CommonHeaderProps } from '../common/CommonHeaderProps';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -45,7 +44,7 @@ function ServicesList(props: ServicesProp){
     )
 }
 
-function ServiceItemCard(props: ServiceItemProps){
+function ServiceItemCard(props: ServiceItem){
     return (
         <Link to="/availability" className="service-item">
             <Card sx={{minWidth: '100%', display: 'flex', flexDirection: 'row' }}>

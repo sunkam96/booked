@@ -1,4 +1,38 @@
-import { ServiceItem } from "../model";
+export interface ServicesProp {
+    bookingData: BookingData;
+    buttonText: string;
+    serviceItems: ServiceItem[];
+}
+
+export interface AvailabilityProps {
+    bookingData: BookingData,
+    serviceItem: ServiceItem;
+}
+
+export interface ConfirmProps {
+    bookingData: BookingData;
+    buttonText: string;
+    serviceItem: ServiceItem;
+}
+
+export interface CommonHeaderProps {
+    showBack: boolean,
+    backLink: string,
+    headerText: string,
+}
+
+export interface CommonButtonProps {
+    buttonText: string;
+    link: string;
+    onClick?: (evt: any) => void,
+}
+
+export interface ServiceItem {
+    service: string;
+    description: string;
+    price: string;
+    checked: boolean;
+}
 
 export interface CustomerInfo {
     firstName: string,

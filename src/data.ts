@@ -1,7 +1,4 @@
-import {ServicesProp} from './pages/ServicesProps.ts'
-import { ConfirmProps } from './pages/ConfirmProps.ts'
-import { BookingData } from './common/BookingData.ts'
-import { AvailabilityProps } from './pages/AvailabilityProps.ts'
+import { BookingData, ServicesProp, ConfirmProps, AvailabilityProps } from './model.ts'
 
 
 const initialBookingData: BookingData = new BookingData(new Date());

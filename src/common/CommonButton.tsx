@@ -1,6 +1,6 @@
 import '../App.css'
 import {Link } from "react-router"
-import { CommonButtonProps } from './CommonButtonProps';
+import { CommonButtonProps } from '../model';
 
 function CommonButton(props: CommonButtonProps){
     if(props.onClick){

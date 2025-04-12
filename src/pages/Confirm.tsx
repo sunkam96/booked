@@ -1,7 +1,6 @@
 import '../App.css'
-import { ConfirmProps } from './ConfirmProps'
+import { ConfirmProps, CommonHeaderProps } from '../model'
 import CommonHeader from '../common/CommonHeader';
-import { CommonHeaderProps } from '../common/CommonHeaderProps';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';

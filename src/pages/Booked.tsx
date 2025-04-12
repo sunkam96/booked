@@ -1,5 +1,5 @@
 import '../App.css'
-import { CommonHeaderProps } from '../common/CommonHeaderProps';
+import { CommonHeaderProps } from '../model';
 import CommonHeader from '../common/CommonHeader';
 
 const headerProps: CommonHeaderProps = {

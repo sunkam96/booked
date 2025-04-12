@@ -1,6 +1,6 @@
 import './App.css'
 import CommonButton from './common/CommonButton';
-import { CommonButtonProps } from './common/CommonButtonProps';
+import { CommonButtonProps } from './model';
 
 const buttonProps: CommonButtonProps = {
   buttonText: "See Services",
