@@ -74,10 +74,6 @@ export class BookingData {
     
 }
 
-export interface ServicesProp {
-    serviceItems: ServiceItem[];
-}
-
 export class ServiceItem {
     _service: string;
     _description: string;
@@ -106,25 +102,10 @@ export class ServiceItem {
     }
 }
 
-export interface AvailabilityProps {
-    serviceItem: ServiceItem;
-}
-
-export interface ConfirmProps {
-    buttonText: string;
-    serviceItem: ServiceItem;
-}
-
 export interface CommonHeaderProps {
     showBack: boolean,
     backLink: string,
     headerText: string,
-}
-
-export interface CommonButtonProps {
-    buttonText: string;
-    link: string;
-    onClick?: (evt: any) => void,
 }
 
 export interface CustomerInfo {
