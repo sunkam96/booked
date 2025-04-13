@@ -5,9 +5,11 @@ import CommonHeader from '../common/CommonHeader';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import {Link } from "react-router";
+import {Link, useParams} from "react-router";
 import {fetchServicesForProvider} from '../firestore'
 import {useState, useEffect} from 'react'
+
+const DEFAULT_TESTING_PROVIDER = "2chainz"
 
 const headerProps: CommonHeaderProps = {
     showBack: false,
@@ -16,10 +18,10 @@ const headerProps: CommonHeaderProps = {
 }
 
 function Services(props: any){
-    const providerName = "2chainz"
-    const [services, setServices] = useState<ServiceItem[]>([])
-    console.log(import.meta.env.VITE_DEBUG_VALUE)
+    const {providerId} = useParams()
+    const providerName = providerId? providerId : DEFAULT_TESTING_PROVIDER
 
+    const [services, setServices] = useState<ServiceItem[]>([])
     useEffect(() => {
         fetchServicesForProvider(providerName).then(data => {
             setServices(data)

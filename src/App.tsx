@@ -15,7 +15,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Services bookingData={bookingData} setBookingData={setBookingData}/>} />
-        <Route path="/services" element={<Services bookingData={bookingData} setBookingData={setBookingData} />} />
+        <Route path="/:providerId" element={<Services bookingData={bookingData} setBookingData={setBookingData}/>} />
+        <Route path="/services/:providerId" element={<Services bookingData={bookingData} setBookingData={setBookingData} />} />
         <Route path="/availability" element={<Availability bookingData={bookingData} setBookingData={setBookingData} />} />
         <Route path="/confirm" element={<Confirm bookingData={bookingData} setBookingData={setBookingData}/>} />
         <Route path="/booked" element={<Booked bookingData={bookingData} setBookingData={setBookingData}/>} />
