@@ -18,6 +18,7 @@ const headerProps: CommonHeaderProps = {
 function Services(props: any){
     const providerName = "2chainz"
     const [services, setServices] = useState<ServiceItem[]>([])
+    console.log(import.meta.env.VITE_DEBUG_VALUE)
 
     useEffect(() => {
         fetchServicesForProvider(providerName).then(data => {
