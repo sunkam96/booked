@@ -42,6 +42,12 @@ function CommonHeaderText(props: CommonHeaderProps){
     )
 }
 
+function CommonLabel(props: any){
+    return (
+        <div className="label">
+            {props.label}
+        </div>
+    )
+}
 
-
-export default CommonHeader
+export {CommonHeader, CommonLabel}

@@ -123,6 +123,7 @@ body {
 }
 
 .label{
+  margin-top: 3%;
   width: 254px;
   height: 35px;
   flex-shrink: 0;

@@ -1,5 +1,5 @@
 import '../App.css'
-import CommonHeader from '../common/CommonHeader';
+import {CommonHeader, CommonLabel} from '../common/Common';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -15,18 +15,10 @@ function Confirm(props: any){
         <div className="page-frame">
             <div className="page-container">
                 <CommonHeader showBack={true} backLink={"/availability/"+providerName} headerText={providerName}/>
-                <ConfirmLabel/>
+                <CommonLabel label="Confirm Booking"/>
                 <ConfirmBooking bookingData={props.bookingData} setBookingData={props.setBookingData} providerName={providerName}/>
                 {/* {props.bookingData.toString()} */}
             </div>
-        </div>
-    )
-}
-
-function ConfirmLabel(){
-    return (
-        <div className="label">
-            <p>Confirm Booking</p>
         </div>
     )
 }

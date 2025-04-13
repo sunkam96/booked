@@ -1,5 +1,5 @@
 import '../App.css'
-import CommonHeader from '../common/CommonHeader';
+import {CommonHeader, CommonLabel} from '../common/Common';
 import {DEFAULT_TESTING_PROVIDER} from '../data'
 import {useParams} from "react-router";
 
@@ -11,18 +11,10 @@ function Booked(props: any){
       <div className="page-frame">
         <div className="page-container">
           <CommonHeader showBack={true} backLink={"/confirm/"+providerName} headerText={providerName}/>
-          <BookedLabel bookingData={props.bookingData} setBookingData={props.setBookingData}/>
+          <CommonLabel label={"Your appointment for "+props.bookingData.serviceItem.service+" is booked!"} />
         </div>
       </div>
     )
-}
-
-function BookedLabel(props: any){
-  return (
-      <div className="label">
-          <p>Your appointment for {props.bookingData.serviceItem.service} is booked!</p>
-      </div>
-  )
 }
 
 export default Booked

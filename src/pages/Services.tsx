@@ -1,7 +1,7 @@
 import '../App.css'
 import {ServiceItem} from '../model';
 
-import CommonHeader from '../common/CommonHeader';
+import {CommonHeader, CommonLabel} from '../common/Common';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -24,20 +24,12 @@ function Services(props: any){
         <div className="page-frame">
             <div className="page-container">
                 <CommonHeader showBack={false} backLink="/" headerText={providerName}/>
-                <ServicesLabel/>
+                <CommonLabel label="Services"/>
                 <ServicesList services={services} bookingData={props.bookingData} setBookingData={props.setBookingData} providerName={providerName}/>
                 {/* {props.bookingData.toString()} */}
             </div>
         </div>
 
-    )
-}
-
-function ServicesLabel(){
-    return (
-        <div className="label">
-            <p>Services</p>
-        </div>
     )
 }
 
