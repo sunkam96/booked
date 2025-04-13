@@ -1,5 +1,5 @@
 import '../App.css'
-import {CommonHeaderProps, ServiceItem} from '../model';
+import {ServiceItem} from '../model';
 
 import CommonHeader from '../common/CommonHeader';
 import Card from '@mui/material/Card';
@@ -8,14 +8,7 @@ import Typography from '@mui/material/Typography';
 import {Link, useParams} from "react-router";
 import {fetchServicesForProvider} from '../firestore'
 import {useState, useEffect} from 'react'
-
-const DEFAULT_TESTING_PROVIDER = "2chainz"
-
-const headerProps: CommonHeaderProps = {
-    showBack: false,
-    backLink: "/",
-    headerText: "2Chainz"
-}
+import {DEFAULT_TESTING_PROVIDER} from '../data'
 
 function Services(props: any){
     const {providerId} = useParams()
@@ -30,9 +23,9 @@ function Services(props: any){
     return (
         <div className="page-frame">
             <div className="page-container">
-                <CommonHeader {...headerProps}/>
+                <CommonHeader showBack={false} backLink="/" headerText={providerName}/>
                 <ServicesLabel/>
-                <ServicesList services={services} bookingData={props.bookingData} setBookingData={props.setBookingData}/>
+                <ServicesList services={services} bookingData={props.bookingData} setBookingData={props.setBookingData} providerName={providerName}/>
                 {/* {props.bookingData.toString()} */}
             </div>
         </div>
@@ -52,7 +45,7 @@ function ServicesList(props: any){
     return (
         <div className="services-list">
             {props.services.map(function(serviceItem: any, i: any){
-                return <ServiceItemCard key={i} serviceItem={serviceItem} bookingData={props.bookingData} setBookingData={props.setBookingData}/>
+                return <ServiceItemCard key={i} serviceItem={serviceItem} bookingData={props.bookingData} setBookingData={props.setBookingData} providerName={props.providerName}/>
             })}
         </div>
     )
@@ -60,7 +53,7 @@ function ServicesList(props: any){
 
 function ServiceItemCard(props: any){
     return (
-        <Link to="/availability" className="service-item" onClick={()=>{updateBookingData(props.serviceItem, props.bookingData, props.setBookingData)}}>
+        <Link to={"/availability/" + props.providerName} className="service-item" onClick={()=>{updateBookingData(props.serviceItem, props.bookingData, props.setBookingData)}}>
             <Card sx={{minWidth: '100%', display: 'flex', flexDirection: 'row' }}>
                 <CardContent sx={{minWidth: '70%', display: 'flex', flexDirection: 'column' }}>
                     <Typography gutterBottom sx={{ color: 'text.primary', fontSize: 18 }}>

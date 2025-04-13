@@ -1,30 +1,25 @@
 import '../App.css'
-import {CommonHeaderProps} from '../model'
 import CommonHeader from '../common/CommonHeader';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import {Link } from "react-router";
-
-
-const headerProps: CommonHeaderProps = {
-    showBack: true,
-    backLink: "/availability",
-    headerText: "2Chainz"
-}
+import {Link, useParams} from "react-router";
+import {DEFAULT_TESTING_PROVIDER} from '../data'
 
 function Confirm(props: any){
+    const {providerId} = useParams()
+    const providerName = providerId? providerId : DEFAULT_TESTING_PROVIDER
+
     return (
         <div className="page-frame">
             <div className="page-container">
-                <CommonHeader {...headerProps}/>
+                <CommonHeader showBack={true} backLink={"/availability/"+providerName} headerText={providerName}/>
                 <ConfirmLabel/>
-                <ConfirmBooking bookingData={props.bookingData} setBookingData={props.setBookingData}/>
+                <ConfirmBooking bookingData={props.bookingData} setBookingData={props.setBookingData} providerName={providerName}/>
                 {/* {props.bookingData.toString()} */}
             </div>
         </div>
-
     )
 }
 
@@ -51,7 +46,7 @@ function ConfirmBooking(props: any){
                 <TextField id="lastName" label="Last Name" variant="outlined" />
                 <TextField id="email" label="Email" variant="outlined" />
                 <TextField id="phone" label="Phone" variant="outlined" />
-                <Link to="/booked">
+                <Link to={"/booked/" + props.providerName}>
                     <Button variant="contained">Confirm</Button>
                 </Link>
             </Box>

@@ -5,18 +5,11 @@ import dayjs from 'dayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { AvailabilitySlot, BookingData, CommonHeaderProps } from '../model';
-
-import {Link } from "react-router";
+import { AvailabilitySlot, BookingData } from '../model';
+import {DEFAULT_TESTING_PROVIDER} from '../data'
+import {Link, useParams} from "react-router";
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
-
-
-const headerProps: CommonHeaderProps = {
-    showBack: true,
-    backLink: "/services",
-    headerText: "2Chainz",
-}
 
 function fetchAvailabilitySlots(date: Date) : AvailabilitySlot[] {
     const slots: AvailabilitySlot[] = [
@@ -31,13 +24,16 @@ function fetchAvailabilitySlots(date: Date) : AvailabilitySlot[] {
   
 
 function Availability(props: any){
+    const {providerId} = useParams()
+    const providerName = providerId? providerId : DEFAULT_TESTING_PROVIDER
+
     return (
       <div className="page-frame">
         <div className="page-container">
-          <CommonHeader {...headerProps}/>
+          <CommonHeader showBack={true} backLink={"/services/"+providerName} headerText={providerName}/>
           <AvailabilityLabel/>
           <AvailabilityDatePicker bookingData={props.bookingData} setBookingData={props.setBookingData}/>
-          <SlotsTable bookingData={props.bookingData} setBookingData={props.setBookingData}/>
+          <SlotsTable bookingData={props.bookingData} setBookingData={props.setBookingData} providerName={providerName}/>
           {/* {props.bookingData.toString()} */}
         </div>
       </div>
@@ -77,7 +73,7 @@ function SlotsTable(props: any){
             <Stack direction="column" spacing={2}>
                 {slots.map(function(slot: AvailabilitySlot, i: number){
                     return (
-                        <Link key={i} to="/confirm" onClick={() => updateBookingDataSlot(slot, props.bookingData, props.setBookingData)}>
+                        <Link key={i} to={"/confirm/" + props.providerName} onClick={() => updateBookingDataSlot(slot, props.bookingData, props.setBookingData)}>
                             <Chip key={i} label={slot.startTime.toLocaleTimeString() + " - " + slot.endTime.toLocaleTimeString()} variant="outlined"/>
                         </Link>
                     )

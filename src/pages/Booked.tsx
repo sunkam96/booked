@@ -1,18 +1,16 @@
 import '../App.css'
-import { CommonHeaderProps } from '../model';
 import CommonHeader from '../common/CommonHeader';
-
-const headerProps: CommonHeaderProps = {
-    showBack: true,
-    backLink: "/confirm",
-    headerText: "2Chainz",
-}
+import {DEFAULT_TESTING_PROVIDER} from '../data'
+import {useParams} from "react-router";
 
 function Booked(props: any){
+  const {providerId} = useParams()
+  const providerName = providerId? providerId : DEFAULT_TESTING_PROVIDER
+
     return (
       <div className="page-frame">
         <div className="page-container">
-          <CommonHeader {...headerProps}/>
+          <CommonHeader showBack={true} backLink={"/confirm/"+providerName} headerText={providerName}/>
           <BookedLabel bookingData={props.bookingData} setBookingData={props.setBookingData}/>
         </div>
       </div>
