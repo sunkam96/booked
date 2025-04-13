@@ -75,7 +75,6 @@ export class BookingData {
 }
 
 export interface ServicesProp {
-    buttonText: string;
     serviceItems: ServiceItem[];
 }
 

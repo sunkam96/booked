@@ -6,7 +6,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import {Link } from "react-router";
-import { baseServicesProps } from '../data';
+import {fetchServicesForProvider} from '../firestore'
+import {useState, useEffect} from 'react'
 
 const headerProps: CommonHeaderProps = {
     showBack: false,
@@ -15,12 +16,20 @@ const headerProps: CommonHeaderProps = {
 }
 
 function Services(props: any){
+    const providerName = "2chainz"
+    const [services, setServices] = useState<ServiceItem[]>([])
+
+    useEffect(() => {
+        fetchServicesForProvider(providerName).then(data => {
+            setServices(data)
+        })}, [])
+
     return (
         <div className="page-frame">
             <div className="page-container">
                 <CommonHeader {...headerProps}/>
                 <ServicesLabel/>
-                <ServicesList {...baseServicesProps} bookingData={props.bookingData} setBookingData={props.setBookingData}/>
+                <ServicesList services={services} bookingData={props.bookingData} setBookingData={props.setBookingData}/>
                 {/* {props.bookingData.toString()} */}
             </div>
         </div>
@@ -39,7 +48,7 @@ function ServicesLabel(){
 function ServicesList(props: any){
     return (
         <div className="services-list">
-            {props.serviceItems.map(function(serviceItem: any, i: any){
+            {props.services.map(function(serviceItem: any, i: any){
                 return <ServiceItemCard key={i} serviceItem={serviceItem} bookingData={props.bookingData} setBookingData={props.setBookingData}/>
             })}
         </div>
@@ -60,7 +69,7 @@ function ServiceItemCard(props: any){
                 </CardContent>
                 <CardContent sx={{flex: 1, marginRight: '5%'}}>
                     <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
-                        {props.serviceItem.price}
+                        {"$" + props.serviceItem.price}
                     </Typography>
                 </CardContent>
             </Card>
