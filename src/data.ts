@@ -1,5 +1,3 @@
-import { ServiceItem } from "./model";
-
 interface ICustomer {
     name: string;
     email: string;
@@ -21,159 +19,170 @@ interface IServiceItem {
 }
 
 interface IBookingData {
-    datetime: Date;
+    bookingDate: Date | null;
+    serviceDate: Date | null;
     serviceItem: IServiceItem | null;
     customer: ICustomer | null;
     provider: IProvider | null;
 }
 
 export class Customer implements ICustomer {
-    private _name: string;
-    private _email: string;
-    private _phone: string;
+    private _name: string | null;
+    private _email: string | null;
+    private _phone: string | null;
 
-    constructor(name: string, email: string, phone: string) {
+    constructor(name: string | null, email: string | null, phone: string | null) {
         this._name = name;
         this._email = email;
         this._phone = phone;
     }
 
-    get name(): string {
+    get name(): string | null {
         return this._name;
     }
 
-    set name(value: string) {
+    set name(value: string | null) {
         this._name = value;
     }
 
-    get email(): string {
+    get email(): string | null {
         return this._email;
     }
 
-    set email(value: string) {
+    set email(value: string | null) {
         this._email = value;
     }
 
-    get phone(): string {
+    get phone(): string | null {
         return this._phone;
     }
 
-    set phone(value: string) {
+    set phone(value: string | null) {
         this._phone = value;
     }
 }
 
 export class Provider implements IProvider {
-    private _name: string;
-    private _id: number;
-    private _description: string;
-    private _services: IServiceItem[];
+    private _name: string | null;
+    private _id: number | null;
+    private _description: string | null;
+    private _services: IServiceItem[] | null;
 
-    constructor(name: string, id: number, description: string, services: IServiceItem[]) {
+    constructor(name: string | null, id: number | null, description: string | null, services: IServiceItem[] | null) {
         this._name = name;
         this._id = id;
         this._description = description;
         this._services = services;
     }
 
-    get name(): string {
+    get name(): string | null {
         return this._name;
     }
 
-    set name(value: string) {
+    set name(value: string | null) {
         this._name = value;
     }
 
-    get id(): number {
+    get id(): number | null {
         return this._id;
     }
 
-    set id(value: number) {
+    set id(value: number | null) {
         this._id = value;
     }
 
-    get description(): string {
+    get description(): string | null {
         return this._description;
     }
 
-    set description(value: string) {
+    set description(value: string | null) {
         this._description = value;
     }
 
-    get services(): IServiceItem[] {
+    get services(): IServiceItem[] | null {
         return this._services;
     }
 
-    set services(value: IServiceItem[]) {
+    set services(value: IServiceItem[] | null) {
         this._services = value;
     }
 }
 
 export class ServiceItem implements IServiceItem {
-    private _service: string;
-    private _description: string;
-    private _price: number;
-    private _time: number;
+    private _service: string | null;
+    private _description: string | null;
+    private _price: number | null;
+    private _time: number | null;
 
-    constructor(service: string, description: string, price: number, time: number) {
+    constructor(service: string | null, description: string | null, price: number | null, time: number | null) {
         this._service = service;
         this._description = description;
         this._price = price;
         this._time = time;
     }
 
-    get service(): string {
+    get service(): string | null {
         return this._service;
     }
 
-    set service(value: string) {
+    set service(value: string | null) {
         this._service = value;
     }
 
-    get description(): string {
+    get description(): string | null {
         return this._description;
     }
 
-    set description(value: string) {
+    set description(value: string | null) {
         this._description = value;
     }
 
-    get price(): number {
+    get price(): number | null {
         return this._price;
     }
 
-    set price(value: number) {
+    set price(value: number | null) {
         this._price = value;
     }
 
-    get time(): number {
+    get time(): number | null {
         return this._time;
     }
 
-    set time(value: number) {
+    set time(value: number | null) {
         this._time = value;
     }
 }
 
 export class BookingData implements IBookingData {
-    private _datetime: Date;
+    private _bookingDate: Date | null;
+    private _serviceDate: Date | null;
     private _serviceItem: IServiceItem | null;
     private _customer: ICustomer | null;
     private _provider: IProvider | null;
 
-    constructor(datetime: Date, serviceItem: IServiceItem | null, customer: ICustomer | null, provider: IProvider | null) {
-        this._datetime = datetime;
+    constructor(bookingDate: Date | null, serviceDate: Date | null, serviceItem: IServiceItem | null, customer: ICustomer | null, provider: IProvider | null) {
+        this._bookingDate = bookingDate;
+        this._serviceDate = serviceDate;
         this._serviceItem = serviceItem;
         this._customer = customer;
         this._provider = provider;
     }
 
-    get datetime(): Date {
-        return this._datetime;
+    get bookingDate(): Date | null {
+        return this._bookingDate;
     }
 
-    set datetime(value: Date) {
-        this._datetime = value;
+    set bookingDate(value: Date | null) {
+        this._bookingDate = value;
+    }
+
+    get serviceDate(): Date | null {
+        return this._serviceDate;
+    }
+
+    set serviceDate(value: Date | null) {
+        this._serviceDate = value;
     }
 
     get serviceItem(): IServiceItem | null {
