@@ -1,32 +1,4 @@
-interface ICustomer {
-    name: string | null;
-    email: string | null;
-    phone: string | null;
-}
-
-interface IProvider {
-    name: string | null;
-    id: number | null;
-    description: string | null;
-    services: IServiceItem[] | null;
-}
-
-interface IServiceItem {
-    service: string | null;
-    description: string | null;
-    price: number | null;
-    time: number | null;
-}
-
-interface IBookingData {
-    bookingDate: Date | null;
-    serviceDate: Date | null;
-    serviceItem: IServiceItem | null;
-    customer: ICustomer | null;
-    provider: IProvider | null;
-}
-
-export class Customer implements ICustomer {
+export class Customer{
     private _name: string | null;
     private _email: string | null;
     private _phone: string | null;
@@ -62,13 +34,13 @@ export class Customer implements ICustomer {
     }
 }
 
-export class Provider implements IProvider {
+export class Provider{
     private _name: string | null;
     private _id: number | null;
     private _description: string | null;
-    private _services: IServiceItem[] | null;
+    private _services: ServiceItem[] | null;
 
-    constructor(name: string | null, id: number | null, description: string | null, services: IServiceItem[] | null) {
+    constructor(name: string | null, id: number | null, description: string | null, services: ServiceItem[] | null) {
         this._name = name;
         this._id = id;
         this._description = description;
@@ -99,16 +71,16 @@ export class Provider implements IProvider {
         this._description = value;
     }
 
-    get services(): IServiceItem[] | null {
+    get services(): ServiceItem[] | null {
         return this._services;
     }
 
-    set services(value: IServiceItem[] | null) {
+    set services(value: ServiceItem[] | null) {
         this._services = value;
     }
 }
 
-export class ServiceItem implements IServiceItem {
+export class ServiceItem{
     private _service: string | null;
     private _description: string | null;
     private _price: number | null;
@@ -154,14 +126,14 @@ export class ServiceItem implements IServiceItem {
     }
 }
 
-export class BookingData implements IBookingData {
+export class BookingData{
     private _bookingDate: Date | null;
     private _serviceDate: Date | null;
-    private _serviceItem: IServiceItem | null;
-    private _customer: ICustomer | null;
-    private _provider: IProvider | null;
+    private _serviceItem: ServiceItem | null;
+    private _customer:  Customer | null;
+    private _provider:  Provider | null;
 
-    constructor(bookingDate: Date | null, serviceDate: Date | null, serviceItem: IServiceItem | null, customer: ICustomer | null, provider: IProvider | null) {
+    constructor(bookingDate: Date | null, serviceDate: Date | null, serviceItem: ServiceItem | null, customer:  Customer | null, provider:  Provider | null) {
         this._bookingDate = bookingDate;
         this._serviceDate = serviceDate;
         this._serviceItem = serviceItem;
@@ -185,27 +157,27 @@ export class BookingData implements IBookingData {
         this._serviceDate = value;
     }
 
-    get serviceItem(): IServiceItem | null {
+    get serviceItem(): ServiceItem | null {
         return this._serviceItem;
     }
 
-    set serviceItem(value: IServiceItem | null) {
+    set serviceItem(value: ServiceItem | null) {
         this._serviceItem = value;
     }
 
-    get customer(): ICustomer | null {
+    get customer():  Customer | null {
         return this._customer;
     }
 
-    set customer(value: ICustomer | null) {
+    set customer(value:  Customer | null) {
         this._customer = value;
     }
 
-    get provider(): IProvider | null {
+    get provider():  Provider | null {
         return this._provider;
     }
 
-    set provider(value: IProvider | null) {
+    set provider(value:  Provider | null) {
         this._provider = value;
     }
 }
