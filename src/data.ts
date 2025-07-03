@@ -1,21 +1,21 @@
 interface ICustomer {
-    name: string;
-    email: string;
-    phone: string;
+    name: string | null;
+    email: string | null;
+    phone: string | null;
 }
 
 interface IProvider {
-    name: string;
-    id: number;
-    description: string;
-    services: IServiceItem[];
+    name: string | null;
+    id: number | null;
+    description: string | null;
+    services: IServiceItem[] | null;
 }
 
 interface IServiceItem {
-    service: string;
-    description: string;
-    price: number;
-    time: number; // minutes
+    service: string | null;
+    description: string | null;
+    price: number | null;
+    time: number | null;
 }
 
 interface IBookingData {

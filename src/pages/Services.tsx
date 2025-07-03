@@ -1,12 +1,12 @@
 import '../App.css'
-import {ServiceItem} from '../model';
+import {ServiceItem, BookingData, Provider} from '../data';
 
 import {CommonHeader, CommonLabel} from '../common/Common';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import {Link, useParams} from "react-router";
-import {fetchServicesForProvider} from '../firestore'
+import {fetchProviderDetails} from '../firestore'
 import {useState, useEffect} from 'react'
 import {DEFAULT_TESTING_PROVIDER} from '../defaults'
 
@@ -15,9 +15,17 @@ function Services(props: any){
     const providerName = providerId? providerId : DEFAULT_TESTING_PROVIDER
 
     const [services, setServices] = useState<ServiceItem[]>([])
+
     useEffect(() => {
-        fetchServicesForProvider(providerName).then(data => {
-            setServices(data)
+        fetchProviderDetails(providerName).then(provider => {
+            if(provider){
+                // update the services and provider in the booking data
+                setServices(provider.services ? provider.services : [])
+                props.setBookingData({
+                    ...props.bookingData,
+                    provider: provider
+                })
+            }
         })}, [])
 
     return (
@@ -26,7 +34,6 @@ function Services(props: any){
                 <CommonHeader showBack={false} backLink="/" headerText={providerName}/>
                 <CommonLabel label="Services"/>
                 <ServicesList services={services} bookingData={props.bookingData} setBookingData={props.setBookingData} providerName={providerName}/>
-                {/* {props.bookingData.toString()} */}
             </div>
         </div>
 
@@ -67,7 +74,7 @@ function ServiceItemCard(props: any){
 }
 
 function updateBookingData(serviceItem: any, bookingData: any, setBookingData: any){
-    bookingData.serviceItem = new ServiceItem(serviceItem.service, serviceItem.description, serviceItem.price)
+    bookingData.serviceItem = new ServiceItem(serviceItem.service, serviceItem.description, serviceItem.price, serviceItem.duration)
     setBookingData(bookingData)
 }
 

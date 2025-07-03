@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, getDocs, collection, query, where } from "firebase/firestore";
-import { ServiceItem } from "./model";
+import { Provider as Provider, ServiceItem as ServiceItem } from "./data";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -16,18 +16,18 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 
-async function fetchServicesForProvider(providerName: string){
+async function fetchProviderDetails(providerName: string) {
   const providerQuery = query(collection(db, "providers"), where("name", "==", providerName))
   const querySnapshot = await getDocs(providerQuery);
-  if (querySnapshot.empty){
-    return []
+  if (querySnapshot.empty) {
+    return null;
   }
-  const services = querySnapshot.docs[0].data().services
-  const results: ServiceItem[] = []
-  services.forEach((service: any) => {
-    results.push(new ServiceItem(service.service, service.description, service.price))
+  const data = querySnapshot.docs[0].data();
+  const serviceItems: ServiceItem[] = []
+  data.services.forEach((service: any) => {
+    serviceItems.push(new ServiceItem(service.service, service.description, service.price, service.duration))
   })
-  return results
+  return new Provider(data.name, data.id, data.description, serviceItems);
 }
 
-export {fetchServicesForProvider}
+export {fetchProviderDetails}
