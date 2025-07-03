@@ -6,7 +6,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { AvailabilitySlot, BookingData } from '../model';
-import {DEFAULT_TESTING_PROVIDER} from '../data'
+import {DEFAULT_TESTING_PROVIDER} from '../defaults'
 import {Link, useParams} from "react-router";
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';

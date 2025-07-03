@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {Link, useParams} from "react-router";
-import {DEFAULT_TESTING_PROVIDER} from '../data'
+import {DEFAULT_TESTING_PROVIDER} from '../defaults'
 
 function Confirm(props: any){
     const {providerId} = useParams()

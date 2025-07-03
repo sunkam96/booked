@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import {Link, useParams} from "react-router";
 import {fetchServicesForProvider} from '../firestore'
 import {useState, useEffect} from 'react'
-import {DEFAULT_TESTING_PROVIDER} from '../data'
+import {DEFAULT_TESTING_PROVIDER} from '../defaults'
 
 function Services(props: any){
     const {providerId} = useParams()

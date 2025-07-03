@@ -1,6 +1,6 @@
 import '../App.css'
 import {CommonHeader, CommonLabel} from '../common/Common';
-import {DEFAULT_TESTING_PROVIDER} from '../data'
+import {DEFAULT_TESTING_PROVIDER} from '../defaults'
 import {useParams} from "react-router";
 
 function Booked(props: any){
