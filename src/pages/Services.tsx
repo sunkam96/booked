@@ -33,7 +33,7 @@ function Services(props: any){
             <div className="page-container">
                 <CommonHeader showBack={false} backLink="/" headerText={providerName}/>
                 <CommonLabel label="Services"/>
-                <ServicesList services={services} bookingData={props.bookingData} setBookingData={props.setBookingData} providerName={providerName}/>
+                <ServicesList services={services} bookingData={props.bookingData} setBookingData={props.setBookingData}/>
             </div>
         </div>
 
@@ -44,7 +44,7 @@ function ServicesList(props: any){
     return (
         <div className="services-list">
             {props.services.map(function(serviceItem: any, i: any){
-                return <ServiceItemCard key={i} serviceItem={serviceItem} bookingData={props.bookingData} setBookingData={props.setBookingData} providerName={props.providerName}/>
+                return <ServiceItemCard key={i} serviceItem={serviceItem} bookingData={props.bookingData} setBookingData={props.setBookingData}/>
             })}
         </div>
     )
@@ -52,7 +52,7 @@ function ServicesList(props: any){
 
 function ServiceItemCard(props: any){
     return (
-        <Link to={"/availability/" + props.providerName} className="service-item" onClick={()=>{updateBookingData(props.serviceItem, props.bookingData, props.setBookingData)}}>
+        <Link to={"/availability/" + props.bookingData.provider.name} className="service-item" onClick={()=>{updateBookingData(props.serviceItem, props.bookingData, props.setBookingData)}}>
             <Card sx={{minWidth: '100%', display: 'flex', flexDirection: 'row' }}>
                 <CardContent sx={{minWidth: '70%', display: 'flex', flexDirection: 'column' }}>
                     <Typography gutterBottom sx={{ color: 'text.primary', fontSize: 18 }}>
@@ -74,8 +74,10 @@ function ServiceItemCard(props: any){
 }
 
 function updateBookingData(serviceItem: any, bookingData: any, setBookingData: any){
-    bookingData.serviceItem = new ServiceItem(serviceItem.service, serviceItem.description, serviceItem.price, serviceItem.duration)
-    setBookingData(bookingData)
+    setBookingData({
+        ...bookingData,
+        serviceItem: new ServiceItem(serviceItem.service, serviceItem.description, serviceItem.price, serviceItem.duration)
+    })
 }
 
 export default Services;

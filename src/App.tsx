@@ -8,22 +8,21 @@ import { BookingData } from './data.ts'
 import './index.css'
 
 
-
 function App() {
-  const [bookingDataServiceItem, setBookingDataServiceItem] = useState(new BookingData(null, null, null, null, null))
+  const [bookingData, setBookingData] = useState(new BookingData(null, null, null, null, null))
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Services bookingDataServiceItem={bookingDataServiceItem} setBookingDataServiceItem={setBookingDataServiceItem}/>} />
-        <Route path="/:providerId" element={<Services bookingDataServiceItem={bookingDataServiceItem} setBookingDataServiceItem={setBookingDataServiceItem}/>} />
-        <Route path="/services" element={<Services bookingDataServiceItem={bookingDataServiceItem} setBookingDataServiceItem={setBookingDataServiceItem}/>} />
-        <Route path="/services/:providerId" element={<Services bookingDataServiceItem={bookingDataServiceItem} setBookingDataServiceItem={setBookingDataServiceItem}/>} />
-        <Route path="/availability" element={<Availability bookingDataServiceItem={bookingDataServiceItem} setBookingDataServiceItem={setBookingDataServiceItem}/>} />
-        <Route path="/availability/:providerId" element={<Availability bookingDataServiceItem={bookingDataServiceItem} setBookingDataServiceItem={setBookingDataServiceItem}/>} />
-        <Route path="/confirm" element={<Confirm bookingDataServiceItem={bookingDataServiceItem} setBookingDataServiceItem={setBookingDataServiceItem}/>} />
-        <Route path="/confirm/:providerId" element={<Confirm bookingDataServiceItem={bookingDataServiceItem} setBookingDataServiceItem={setBookingDataServiceItem}/>} />
-        <Route path="/booked" element={<Booked bookingDataServiceItem={bookingDataServiceItem} setBookingDataServiceItem={setBookingDataServiceItem}/>} />
-        <Route path="/booked/:providerId" element={<Booked bookingDataServiceItem={bookingDataServiceItem} setBookingDataServiceItem={setBookingDataServiceItem}/>} />
+        <Route path="/" element={<Services bookingData={bookingData} setBookingData={setBookingData}/>} />
+        <Route path="/:providerId" element={<Services bookingData={bookingData} setBookingData={setBookingData}/>} />
+        <Route path="/services" element={<Services bookingData={bookingData} setBookingData={setBookingData}/>} />
+        <Route path="/services/:providerId" element={<Services bookingData={bookingData} setBookingData={setBookingData}/>} />
+        <Route path="/availability" element={<Availability bookingData={bookingData} setBookingData={setBookingData}/>} />
+        <Route path="/availability/:providerId" element={<Availability bookingData={bookingData} setBookingData={setBookingData}/>} />
+        <Route path="/confirm" element={<Confirm bookingData={bookingData} setBookingData={setBookingData}/>} />
+        <Route path="/confirm/:providerId" element={<Confirm bookingData={bookingData} setBookingData={setBookingData}/>} />
+        <Route path="/booked" element={<Booked bookingData={bookingData} setBookingData={setBookingData}/>} />
+        <Route path="/booked/:providerId" element={<Booked bookingData={bookingData} setBookingData={setBookingData}/>} />
       </Routes>
     </BrowserRouter>
   )

@@ -5,36 +5,24 @@ import dayjs from 'dayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { AvailabilitySlot, BookingData } from '../model';
+import {BookingData} from '../data';
 import {DEFAULT_TESTING_PROVIDER} from '../defaults'
-import {Link, useParams} from "react-router";
+import {Link} from "react-router";
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
+import {useState} from 'react'
 
-function fetchAvailabilitySlots(date: Date) : AvailabilitySlot[] {
-    const slots: AvailabilitySlot[] = [
-        new AvailabilitySlot(new Date(date.setHours(10, 0, 0, 0)), new Date(date.setHours(10, 30, 0, 0))),
-        new AvailabilitySlot(new Date(date.setHours(10, 30, 0, 0)), new Date(date.setHours(11, 0, 0, 0))),
-        new AvailabilitySlot(new Date(date.setHours(13, 0, 0, 0)), new Date(date.setHours(14, 30, 0, 0))),
-        new AvailabilitySlot(new Date(date.setHours(14, 30, 0, 0)), new Date(date.setHours(15, 30, 0, 0))),
-        new AvailabilitySlot(new Date(date.setHours(15, 30, 0, 0)), new Date(date.setHours(16, 0, 0, 0))),
-    ]
-    return slots;
-}
-  
 
 function Availability(props: any){
-    const {providerId} = useParams()
-    const providerName = providerId? providerId : DEFAULT_TESTING_PROVIDER
-
+    const providerName = props.bookingData.provider.name? props.bookingData.provider.name : DEFAULT_TESTING_PROVIDER
+    const [serviceDate, setServiceDate] = useState(props.bookingData.serviceDate? props.bookingData.serviceDate : new Date())
     return (
       <div className="page-frame">
         <div className="page-container">
           <CommonHeader showBack={true} backLink={"/services/"+providerName} headerText={providerName}/>
           <CommonLabel label="Availability" />
-          <AvailabilityDatePicker bookingData={props.bookingData} setBookingData={props.setBookingData}/>
-          <SlotsTable bookingData={props.bookingData} setBookingData={props.setBookingData} providerName={providerName}/>
-          {/* {props.bookingData.toString()} */}
+          <AvailabilityDatePicker serviceDate={serviceDate} setServiceDate={setServiceDate} bookingData={props.bookingData} setBookingData={props.setBookingData}/>
+          <SlotsTable serviceDate={serviceDate} setServiceDate={setServiceDate} bookingData={props.bookingData} setBookingData={props.setBookingData} providerName={providerName}/>
         </div>
       </div>
 
@@ -46,27 +34,26 @@ function AvailabilityDatePicker(props: any){
         <div className="availability-date-picker">
             <p>Please select a date:</p>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DatePicker onChange={(newDate) => updateBookingDataDate(newDate, props.bookingData, props.setBookingData)} defaultValue={dayjs(props.bookingData.date? props.bookingData.date : new Date())}/>
+                <DatePicker onChange={(newDate) => updateBookingDataDate(newDate, props.setServiceDate)} defaultValue={dayjs(new Date())}/>
             </LocalizationProvider>
         </div>
     )
 }
 
-function updateBookingDataDate(newDate: any, bookingData: BookingData, setBookingData: any){
-    const updatedBookingData = new BookingData(new Date(Date.parse(newDate)), bookingData.serviceItem, bookingData.customer, bookingData.selectedSlot)
-    setBookingData(updatedBookingData)
+function updateBookingDataDate(newDate: any, setServiceDate: any){    
+    setServiceDate(new Date(Date.parse(newDate)))
 }
 
 function SlotsTable(props: any){
-    const slots = fetchAvailabilitySlots(props.bookingData.date? props.bookingData.date : new Date());
+    const slots = getSlots(props.bookingData, props.serviceDate)
     return (
         <div className="available-slots-table">
             <h3>Available Slots</h3>
             <Stack direction="column" spacing={2}>
-                {slots.map(function(slot: AvailabilitySlot, i: number){
+                {slots.map(function(slot: any, i: number){
                     return (
-                        <Link key={i} to={"/confirm/" + props.providerName} onClick={() => updateBookingDataSlot(slot, props.bookingData, props.setBookingData)}>
-                            <Chip key={i} label={slot.startTime.toLocaleTimeString() + " - " + slot.endTime.toLocaleTimeString()} variant="outlined"/>
+                        <Link key={i} to={"/confirm/" + props.providerName} onClick={() => bookSlot(slot, props.bookingData, props.setBookingData)}>
+                            <Chip key={i} label={slot.toLocaleTimeString()} variant="outlined"/>
                         </Link>
                     )
                 })}
@@ -76,10 +63,25 @@ function SlotsTable(props: any){
     )
 }
 
-function updateBookingDataSlot(slot: AvailabilitySlot, bookingData: BookingData, setBookingData: any){
-    const selectedDate = bookingData.selectedDate ? bookingData.selectedDate : new Date()
-    const updatedBookingData = new BookingData(selectedDate, bookingData.serviceItem, bookingData.customer, slot)
-    setBookingData(updatedBookingData)
+function getSlots(bookingData: any, serviceDate: any){
+    // use bookingData.serviceItem and serviceDate to fetch slots dynamically
+    console.log("serviceDate: ", serviceDate)
+    return [
+        new Date(serviceDate.setHours(9, 0, 0, 0)),
+        new Date(serviceDate.setHours(9, 30, 0, 0)),
+        new Date(serviceDate.setHours(10, 0, 0, 0)),
+        new Date(serviceDate.setHours(10, 30, 0, 0)),
+        new Date(serviceDate.setHours(12, 0, 0, 0)),
+    ]
+
+}
+
+function bookSlot(slot: any, bookingData: BookingData, setBookingData: any){
+    setBookingData({
+        ...bookingData, 
+        serviceDate: slot,
+        bookingDate: new Date(),
+    })
 }
 
 export default Availability
