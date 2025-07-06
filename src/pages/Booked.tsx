@@ -1,11 +1,9 @@
 import '../App.css'
 import {CommonHeader, CommonLabel} from '../common/Common';
 import {DEFAULT_TESTING_PROVIDER} from '../defaults'
-import {useParams} from "react-router";
 
 function Booked(props: any){
-  const {providerId} = useParams()
-  const providerName = providerId? providerId : DEFAULT_TESTING_PROVIDER
+    const providerName = props.bookingData.provider.name? props.bookingData.provider.name : DEFAULT_TESTING_PROVIDER
 
     return (
       <div className="page-frame">

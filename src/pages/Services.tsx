@@ -1,5 +1,5 @@
 import '../App.css'
-import {ServiceItem, BookingData, Provider} from '../data';
+import {ServiceItem, BookingData} from '../data';
 
 import {CommonHeader, CommonLabel} from '../common/Common';
 import Card from '@mui/material/Card';
@@ -73,7 +73,7 @@ function ServiceItemCard(props: any){
     )
 }
 
-function updateBookingData(serviceItem: any, bookingData: any, setBookingData: any){
+function updateBookingData(serviceItem: any, bookingData: BookingData, setBookingData: any){
     setBookingData({
         ...bookingData,
         serviceItem: new ServiceItem(serviceItem.service, serviceItem.description, serviceItem.price, serviceItem.duration)

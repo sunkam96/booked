@@ -64,8 +64,7 @@ function SlotsTable(props: any){
 }
 
 function getSlots(bookingData: any, serviceDate: any){
-    // use bookingData.serviceItem and serviceDate to fetch slots dynamically
-    console.log("serviceDate: ", serviceDate)
+    // TODO: use bookingData.serviceItem and serviceDate to fetch slots dynamically
     return [
         new Date(serviceDate.setHours(9, 0, 0, 0)),
         new Date(serviceDate.setHours(9, 30, 0, 0)),

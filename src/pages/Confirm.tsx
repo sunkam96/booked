@@ -4,12 +4,11 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import {Link, useParams} from "react-router";
+import {Link} from "react-router";
 import {DEFAULT_TESTING_PROVIDER} from '../defaults'
 
 function Confirm(props: any){
-    const {providerId} = useParams()
-    const providerName = providerId? providerId : DEFAULT_TESTING_PROVIDER
+    const providerName = props.bookingData.provider.name? props.bookingData.provider.name : DEFAULT_TESTING_PROVIDER
 
     return (
         <div className="page-frame">
@@ -17,7 +16,6 @@ function Confirm(props: any){
                 <CommonHeader showBack={true} backLink={"/availability/"+providerName} headerText={providerName}/>
                 <CommonLabel label="Confirm Booking"/>
                 <ConfirmBooking bookingData={props.bookingData} setBookingData={props.setBookingData} providerName={providerName}/>
-                {/* {props.bookingData.toString()} */}
             </div>
         </div>
     )
@@ -33,7 +31,7 @@ function ConfirmBooking(props: any){
                 autoComplete="off"
                 >
                 <Typography variant="body2" component="div">Service: {props.bookingData.serviceItem.service}</Typography>
-                <Typography variant="body2" component="div">Time: {props.bookingData.selectedDate!.toDateString()}</Typography>
+                <Typography variant="body2" component="div">Time: {props.bookingData.serviceDate.toDateString()}</Typography>
                 <TextField id="firstName" label="First Name" variant="outlined" />
                 <TextField id="lastName" label="Last Name" variant="outlined" />
                 <TextField id="email" label="Email" variant="outlined" />
