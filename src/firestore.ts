@@ -31,7 +31,6 @@ async function fetchProviderDetails(providerId: number) {
 }
 
 async function writeBookingData(bookingData: BookingData) {
-  console.log("Writing booking data to Firestore: ", bookingData);
   try {
     const bookingsRef = collection(db, "bookings");
     const newBookingRef = await addDoc(bookingsRef, {
@@ -49,7 +48,6 @@ async function writeBookingData(bookingData: BookingData) {
         phone: bookingData?.customer?.phone
       }
     });
-    console.log("New booking created with id: ", newBookingRef.id);
   } catch (e) {
     console.error("Error adding document: ", bookingData, e);
   }

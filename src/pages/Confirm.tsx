@@ -23,8 +23,6 @@ function Confirm(props: any){
 
 function handleInputChange(evt: any, field: any, bookingData: any, setBookingData: any){
     evt.preventDefault()
-
-    console.log('handleInputChange', field, evt.target.value)
     const currentCustomer = bookingData.customer ? bookingData.customer : new Customer(null, null, null)
     setBookingData({
         ...bookingData,

@@ -2,7 +2,6 @@ import '../App.css'
 import {CommonHeader, CommonLabel} from '../common/Common';
 
 function Booked(props: any){
-  console.log('Booked props', props)
     return (
       <div className="page-frame">
         <div className="page-container">
