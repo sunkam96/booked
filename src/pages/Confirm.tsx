@@ -5,18 +5,39 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {Link} from "react-router";
+import {Customer} from '../data';
+import {writeBookingData} from '../firestore';
 
 function Confirm(props: any){
-    const providerName = props.bookingData.provider.name
+    
     return (
         <div className="page-frame">
             <div className="page-container">
-                <CommonHeader showBack={true} backLink={"/availability/"+providerName} headerText={providerName}/>
+                <CommonHeader showBack={true} backLink={"/availability/"+props.bookingData.provider.id} headerText={props.bookingData.provider.name}/>
                 <CommonLabel label="Confirm Booking"/>
-                <ConfirmBooking bookingData={props.bookingData} setBookingData={props.setBookingData} providerName={providerName}/>
+                <ConfirmBooking bookingData={props.bookingData} setBookingData={props.setBookingData}/>
             </div>
         </div>
     )
+}
+
+function handleInputChange(evt: any, field: any, bookingData: any, setBookingData: any){
+    evt.preventDefault()
+
+    console.log('handleInputChange', field, evt.target.value)
+    const currentCustomer = bookingData.customer ? bookingData.customer : new Customer(null, null, null)
+    setBookingData({
+        ...bookingData,
+        customer: {
+            ...currentCustomer,
+            [field]: evt.target.value
+        }
+    })
+}
+
+function handleConfirm(evt: any, bookingData: any){
+    // evt.preventDefault()
+    writeBookingData(bookingData);
 }
 
 function ConfirmBooking(props: any){
@@ -30,11 +51,10 @@ function ConfirmBooking(props: any){
                 >
                 <Typography variant="body2" component="div">Service: {props.bookingData.serviceItem.service}</Typography>
                 <Typography variant="body2" component="div">Time: {props.bookingData.serviceDate.toDateString()}</Typography>
-                <TextField id="firstName" label="First Name" variant="outlined" />
-                <TextField id="lastName" label="Last Name" variant="outlined" />
-                <TextField id="email" label="Email" variant="outlined" />
-                <TextField id="phone" label="Phone" variant="outlined" />
-                <Link to={"/booked/" + props.providerName}>
+                <TextField id="name" label="Name" variant="outlined" onChange={(evt) => handleInputChange(evt, "name", props.bookingData, props.setBookingData)} />
+                <TextField id="email" label="Email" variant="outlined" onChange={(evt) => handleInputChange(evt, "email", props.bookingData, props.setBookingData)}/>
+                <TextField id="phone" label="Phone" variant="outlined" onChange={(evt) => handleInputChange(evt, "phone", props.bookingData, props.setBookingData)} />
+                <Link to={"/booked/" + props.bookingData.provider.id} onClick={(evt) => handleConfirm(evt, props.bookingData)}>
                     <Button variant="contained">Confirm</Button>
                 </Link>
             </Box>

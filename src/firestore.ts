@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDocs, collection, query, where } from "firebase/firestore";
-import { Provider as Provider, ServiceItem as ServiceItem } from "./data";
+import { doc, addDoc, getFirestore, getDocs, collection, query, where } from "firebase/firestore";
+import { BookingData, Provider, ServiceItem } from "./data";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -16,8 +16,8 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 
-async function fetchProviderDetails(providerName: string) {
-  const providerQuery = query(collection(db, "providers"), where("name", "==", providerName))
+async function fetchProviderDetails(providerId: number) {
+  const providerQuery = query(collection(db, "providers"), where("id", "==", providerId))
   const querySnapshot = await getDocs(providerQuery);
   if (querySnapshot.empty) {
     return null;
@@ -30,4 +30,29 @@ async function fetchProviderDetails(providerName: string) {
   return new Provider(data.name, data.id, data.description, serviceItems);
 }
 
-export {fetchProviderDetails}
+async function writeBookingData(bookingData: BookingData) {
+  console.log("Writing booking data to Firestore: ", bookingData);
+  try {
+    const bookingsRef = collection(db, "bookings");
+    const newBookingRef = await addDoc(bookingsRef, {
+      provider: {
+        name: bookingData?.provider?.name,
+        id: bookingData?.provider?.id,
+      },
+      serviceItem: {
+        service: bookingData?.serviceItem?.service,
+      },
+      serviceDate: bookingData.serviceDate,
+      customer: {
+        name: bookingData?.customer?.name,
+        email: bookingData?.customer?.email,
+        phone: bookingData?.customer?.phone
+      }
+    });
+    console.log("New booking created with id: ", newBookingRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", bookingData, e);
+  }
+}
+
+export {fetchProviderDetails, writeBookingData}

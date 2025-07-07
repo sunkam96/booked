@@ -16,11 +16,11 @@ function Services(props: any){
 
     const [services, setServices] = useState<ServiceItem[]>([])
     const {providerId} = useParams()
-    const defaultProvider = providerId ? providerId : DEFAULT_TESTING_PROVIDER
+    const defaultProvider = props.bookingData?.provider?.id ?? DEFAULT_TESTING_PROVIDER
+    const currentProvider = providerId ? +providerId : +defaultProvider // number not string
 
     useEffect(() => {
-            const providerName = props.bookingData.provider && props.bookingData.provider.name ? props.bookingData.provider.name : defaultProvider
-            fetchProviderDetails(providerName).then(provider => {
+            fetchProviderDetails(currentProvider).then(provider => {
             if(provider){
                 // update the services and provider in the booking data
                 setServices(provider.services ? provider.services : [])
@@ -57,7 +57,7 @@ function ServicesList(props: any){
 
 function ServiceItemCard(props: any){
     return (
-        <Link to={"/availability/" + props.bookingData.provider.name} className="service-item" onClick={()=>{updateBookingData(props.serviceItem, props.bookingData, props.setBookingData)}}>
+        <Link to={"/availability/" + props.bookingData.provider.id} className="service-item" onClick={()=>{updateBookingData(props.serviceItem, props.bookingData, props.setBookingData)}}>
             <Card sx={{minWidth: '100%', display: 'flex', flexDirection: 'row' }}>
                 <CardContent sx={{minWidth: '70%', display: 'flex', flexDirection: 'column' }}>
                     <Typography gutterBottom sx={{ color: 'text.primary', fontSize: 18 }}>
