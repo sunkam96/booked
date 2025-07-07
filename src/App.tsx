@@ -7,7 +7,6 @@ import { BrowserRouter, Routes, Route } from "react-router"
 import { BookingData } from './data.ts'
 import './index.css'
 
-
 function App() {
   const [bookingData, setBookingData] = useState(new BookingData(null, null, null, null, null))
   return (

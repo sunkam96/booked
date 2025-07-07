@@ -1,9 +1,8 @@
 import '../App.css'
 import {CommonHeader, CommonLabel} from '../common/Common';
-import {DEFAULT_TESTING_PROVIDER} from '../defaults'
 
 function Booked(props: any){
-    const providerName = props.bookingData.provider.name? props.bookingData.provider.name : DEFAULT_TESTING_PROVIDER
+    const providerName = props.bookingData.provider.name
 
     return (
       <div className="page-frame">

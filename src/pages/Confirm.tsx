@@ -5,11 +5,9 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {Link} from "react-router";
-import {DEFAULT_TESTING_PROVIDER} from '../defaults'
 
 function Confirm(props: any){
-    const providerName = props.bookingData.provider.name? props.bookingData.provider.name : DEFAULT_TESTING_PROVIDER
-
+    const providerName = props.bookingData.provider.name
     return (
         <div className="page-frame">
             <div className="page-container">

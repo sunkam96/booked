@@ -1,5 +1,5 @@
 import '../App.css'
-import {ServiceItem, BookingData} from '../data';
+import {ServiceItem, BookingData, Provider} from '../data';
 
 import {CommonHeader, CommonLabel} from '../common/Common';
 import Card from '@mui/material/Card';
@@ -10,14 +10,17 @@ import {fetchProviderDetails} from '../firestore'
 import {useState, useEffect} from 'react'
 import {DEFAULT_TESTING_PROVIDER} from '../defaults'
 
+
+
 function Services(props: any){
-    const {providerId} = useParams()
-    const providerName = providerId? providerId : DEFAULT_TESTING_PROVIDER
 
     const [services, setServices] = useState<ServiceItem[]>([])
+    const {providerId} = useParams()
+    const defaultProvider = providerId ? providerId : DEFAULT_TESTING_PROVIDER
 
     useEffect(() => {
-        fetchProviderDetails(providerName).then(provider => {
+            const providerName = props.bookingData.provider && props.bookingData.provider.name ? props.bookingData.provider.name : defaultProvider
+            fetchProviderDetails(providerName).then(provider => {
             if(provider){
                 // update the services and provider in the booking data
                 setServices(provider.services ? provider.services : [])
@@ -26,12 +29,14 @@ function Services(props: any){
                     provider: provider
                 })
             }
+        }).catch((error) => {
+            console.error("Error fetching provider details: ", error);
         })}, [])
 
     return (
         <div className="page-frame">
             <div className="page-container">
-                <CommonHeader showBack={false} backLink="/" headerText={providerName}/>
+                <CommonHeader showBack={false} backLink="/" headerText={props.bookingData?.provider?.name ?? ''}/>
                 <CommonLabel label="Services"/>
                 <ServicesList services={services} bookingData={props.bookingData} setBookingData={props.setBookingData}/>
             </div>

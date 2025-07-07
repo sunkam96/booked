@@ -6,7 +6,6 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import {BookingData} from '../data';
-import {DEFAULT_TESTING_PROVIDER} from '../defaults'
 import {Link} from "react-router";
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
@@ -14,7 +13,7 @@ import {useState} from 'react'
 
 
 function Availability(props: any){
-    const providerName = props.bookingData.provider.name? props.bookingData.provider.name : DEFAULT_TESTING_PROVIDER
+    const providerName = props.bookingData.provider.name
     const [serviceDate, setServiceDate] = useState(props.bookingData.serviceDate? props.bookingData.serviceDate : new Date())
     return (
       <div className="page-frame">
