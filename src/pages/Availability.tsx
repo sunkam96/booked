@@ -14,12 +14,12 @@ import {useState} from 'react'
 
 function Availability(props: any){
     const providerName = props.bookingData.provider.name
-    const porivderId = props.bookingData.provider.id
+    const providerId = props.bookingData.provider.id
     const [serviceDate, setServiceDate] = useState(props.bookingData.serviceDate? props.bookingData.serviceDate : new Date())
     return (
       <div className="page-frame">
         <div className="page-container">
-          <CommonHeader showBack={true} backLink={"/services/"+porivderId} headerText={providerName}/>
+          <CommonHeader showBack={true} backLink={"/services/"+providerId} headerText={providerName}/>
           <CommonLabel label="Availability" />
           <AvailabilityDatePicker serviceDate={serviceDate} setServiceDate={setServiceDate} bookingData={props.bookingData} setBookingData={props.setBookingData}/>
           <SlotsTable serviceDate={serviceDate} setServiceDate={setServiceDate} bookingData={props.bookingData} setBookingData={props.setBookingData} providerName={providerName}/>
@@ -45,7 +45,7 @@ function updateBookingDataDate(newDate: any, setServiceDate: any){
 }
 
 function SlotsTable(props: any){
-    const slots = getSlots(props.bookingData, props.serviceDate)
+    const slots = getSlots(props.serviceDate)
     return (
         <div className="available-slots-table">
             <h3>Available Slots</h3>
@@ -63,7 +63,7 @@ function SlotsTable(props: any){
     )
 }
 
-function getSlots(bookingData: any, serviceDate: any){
+function getSlots(serviceDate: any){
     // TODO: use bookingData.serviceItem and serviceDate to fetch slots dynamically
     return [
         new Date(serviceDate.setHours(9, 0, 0, 0)),

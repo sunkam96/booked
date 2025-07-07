@@ -33,8 +33,7 @@ function handleInputChange(evt: any, field: any, bookingData: any, setBookingDat
     })
 }
 
-function handleConfirm(evt: any, bookingData: any){
-    // evt.preventDefault()
+function handleConfirm(bookingData: any){
     writeBookingData(bookingData);
 }
 
@@ -52,7 +51,7 @@ function ConfirmBooking(props: any){
                 <TextField id="name" label="Name" variant="outlined" onChange={(evt) => handleInputChange(evt, "name", props.bookingData, props.setBookingData)} />
                 <TextField id="email" label="Email" variant="outlined" onChange={(evt) => handleInputChange(evt, "email", props.bookingData, props.setBookingData)}/>
                 <TextField id="phone" label="Phone" variant="outlined" onChange={(evt) => handleInputChange(evt, "phone", props.bookingData, props.setBookingData)} />
-                <Link to={"/booked/" + props.bookingData.provider.id} onClick={(evt) => handleConfirm(evt, props.bookingData)}>
+                <Link to={"/booked/" + props.bookingData.provider.id} onClick={() => handleConfirm(props.bookingData)}>
                     <Button variant="contained">Confirm</Button>
                 </Link>
             </Box>

@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { doc, addDoc, getFirestore, getDocs, collection, query, where } from "firebase/firestore";
+import { addDoc, getFirestore, getDocs, collection, query, where } from "firebase/firestore";
 import { BookingData, Provider, ServiceItem } from "./data";
 
 const firebaseConfig = {
@@ -33,7 +33,7 @@ async function fetchProviderDetails(providerId: number) {
 async function writeBookingData(bookingData: BookingData) {
   try {
     const bookingsRef = collection(db, "bookings");
-    const newBookingRef = await addDoc(bookingsRef, {
+    await addDoc(bookingsRef, {
       provider: {
         name: bookingData?.provider?.name,
         id: bookingData?.provider?.id,
