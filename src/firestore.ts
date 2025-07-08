@@ -28,7 +28,7 @@ async function fetchProviderDetails(providerName: string) {
   data.services.forEach((service: any) => {
     serviceItems.push(new ServiceItem(service.service, service.description, service.price, service.duration))
   })
-  return new Provider(data.name, data.id, data.description, serviceItems);
+  return new Provider(data.name, data.logoUrl, data.description, serviceItems);
 }
 
 async function writeBookingData(bookingData: BookingData) {
@@ -37,7 +37,6 @@ async function writeBookingData(bookingData: BookingData) {
     await addDoc(bookingsRef, {
       provider: {
         name: bookingData?.provider?.name,
-        id: bookingData?.provider?.id,
       },
       serviceItem: {
         service: bookingData?.serviceItem?.service,
