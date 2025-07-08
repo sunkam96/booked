@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Input from '@mui/material/Input';
  import Button from '@mui/material/Button';
-import {Link} from "react-router";
+import {Link, useNavigate} from "react-router";
 import {useState} from 'react'
 import {Provider, ServiceItem} from '../data';
 import {writeNewProvider, saveProviderLogoImage} from '../firestore';
@@ -36,10 +36,12 @@ function handleLogoImageChange(evt: any, setLogoImage: any){
     }
 }
 
-function handleFormSubmit(provider: any, serviceItem: any, logoImage: any){
+function handleFormSubmit(provider: any, serviceItem: any, logoImage: any, navigate: any){
     saveProviderLogoImage(logoImage).then((downloadUrl) => {
         if(downloadUrl){
-            writeNewProvider(new Provider(provider.name, downloadUrl, provider.description, [serviceItem]))
+            writeNewProvider(new Provider(provider.name, downloadUrl, provider.description, [serviceItem])).then(() => {
+                navigate(`/${provider.name}/services`)
+            })
         }
     }).catch((error) => {
         console.error("Error uploading provider logo:", error);
@@ -63,6 +65,7 @@ function ProviderForm(){
     const [provider, setProvider] = useState(new Provider(null, null, null, null))
     const [serviceItem, setServiceItem] = useState(new ServiceItem(null, null, null, null))
     const [logoImage, setLogoImage] = useState<File | null>(null)
+    const navigate = useNavigate()
 
     return (
         <div className="confirm-booking">
@@ -80,7 +83,7 @@ function ProviderForm(){
                 <TextField id="price" label="Price" variant="outlined" onChange={(evt) => handleAddServiceItem(evt, "phone", serviceItem, setServiceItem)}/>
                 <TextField id="service" label="Service" variant="outlined" onChange={(evt) => handleAddServiceItem(evt, "service", serviceItem, setServiceItem)}/>
                 <Input id="logo" type="file" onChange={(evt) => handleLogoImageChange(evt, setLogoImage)}/>
-                <Link to={"/services"} onClick={() => handleFormSubmit(provider, serviceItem, logoImage)}>
+                <Link to={"/services"} onClick={() => handleFormSubmit(provider, serviceItem, logoImage, navigate)}>
                     <Button variant="contained">Confirm</Button>
                 </Link>
             </Box>
