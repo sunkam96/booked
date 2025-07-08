@@ -3,11 +3,12 @@ import {CommonLabel} from '../common/Common';
 import '../App.css'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import Input from '@mui/material/Input';
+ import Button from '@mui/material/Button';
 import {Link} from "react-router";
 import {useState} from 'react'
 import {Provider, ServiceItem} from '../data';
-import {writeNewProvider} from '../firestore';
+import {writeNewProvider, saveProviderLogoImage} from '../firestore';
 
 
 function RegisterProvider(props: any){
@@ -37,14 +38,31 @@ function handleAddServiceItem(evt: any, field: any, serviceItem: any, setService
     })
 }
 
-function handleFormSubmit(provider: any, serviceItem: any){
-    console.log("handleFormSubmit", provider, serviceItem)
-    writeNewProvider(new Provider(provider.name, null, provider.description, [serviceItem]))
+function handleLogoImageChange(evt: any, setLogoImage: any){
+    evt.preventDefault()
+    const file = evt.target.files[0]
+    if(file){
+        setLogoImage(file)
+    }
 }
+
+function handleFormSubmit(provider: any, serviceItem: any, logoImage: any){
+    saveProviderLogoImage(logoImage).then((downloadUrl) => {
+        if(downloadUrl){
+            writeNewProvider(new Provider(provider.name, downloadUrl, provider.description, [serviceItem]))
+        }
+    }).catch((error) => {
+        console.error("Error uploading provider logo:", error);
+    })
+    // writeNewProvider(new Provider(provider.name, null, provider.description, [serviceItem]))
+}
+
 
 function ProviderForm(props: any){
     const [provider, setProvider] = useState(new Provider(null, null, null, null))
     const [serviceItem, setServiceItem] = useState(new ServiceItem(null, null, null, null))
+    const [logoImage, setLogoImage] = useState<File | null>(null)
+
     return (
         <div className="confirm-booking">
             <Box
@@ -60,7 +78,8 @@ function ProviderForm(props: any){
                 <TextField id="description" label="Description" variant="outlined" onChange={(evt) => handleAddServiceItem(evt, "description", serviceItem, setServiceItem)}/>
                 <TextField id="price" label="Price" variant="outlined" onChange={(evt) => handleAddServiceItem(evt, "phone", serviceItem, setServiceItem)}/>
                 <TextField id="service" label="Service" variant="outlined" onChange={(evt) => handleAddServiceItem(evt, "service", serviceItem, setServiceItem)}/>
-                <Link to={"/services"} onClick={() => handleFormSubmit(provider, serviceItem)}>
+                <Input id="logo" type="file" onChange={(evt) => handleLogoImageChange(evt, setLogoImage)}/>
+                <Link to={"/services"} onClick={() => handleFormSubmit(provider, serviceItem, logoImage)}>
                     <Button variant="contained">Confirm</Button>
                 </Link>
             </Box>

@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { addDoc, getFirestore, getDocs, collection, query, where } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL, getStorage} from "firebase/storage";
 import { BookingData, Provider, ServiceItem } from "./data";
 
 const firebaseConfig = {
@@ -53,12 +54,27 @@ async function writeBookingData(bookingData: BookingData) {
   }
 }
 
+async function saveProviderLogoImage(logoImage: File ){
+  try {
+      const storage = getStorage(app);
+      const storageRef = ref(storage, `images/${logoImage.name}`);
+
+      const snapshot = await uploadBytes(storageRef, logoImage);
+
+      const url = await getDownloadURL(snapshot.ref);
+      return url;
+
+    } catch (err) {
+      console.error('Error uploading provider logo:', err);
+  }
+}
+
 async function writeNewProvider(provider: Provider) {
   try {
     const providersRef = collection(db, "providers");
     await addDoc(providersRef, {
       name: provider.name,
-      id: provider.id,
+      logoUrl: provider.logoUrl,
       description: provider.description,
       services: provider.services
     });
@@ -67,4 +83,4 @@ async function writeNewProvider(provider: Provider) {
   }
 }
 
-export {fetchProviderDetails, writeBookingData, writeNewProvider}
+export {fetchProviderDetails, writeBookingData, writeNewProvider, saveProviderLogoImage}
