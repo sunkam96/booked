@@ -11,16 +11,6 @@ import {Provider, ServiceItem} from '../data';
 import {writeNewProvider, saveProviderLogoImage} from '../firestore';
 
 
-function RegisterProvider(props: any){
-    return (
-      <div className="page-frame">
-        <div className="page-container">
-          <CommonLabel label={"Signup as a provider"} />
-          <ProviderForm/>
-        </div>
-      </div>
-    )
-}
 
 function handleFormChange(evt: any, field: any, provider: any, setProvider: any){
     evt.preventDefault()
@@ -54,11 +44,22 @@ function handleFormSubmit(provider: any, serviceItem: any, logoImage: any){
     }).catch((error) => {
         console.error("Error uploading provider logo:", error);
     })
-    // writeNewProvider(new Provider(provider.name, null, provider.description, [serviceItem]))
 }
 
 
-function ProviderForm(props: any){
+function RegisterProvider(){
+    return (
+      <div className="page-frame">
+        <div className="page-container">
+          <CommonLabel label={"Signup as a provider"} />
+          <ProviderForm/>
+        </div>
+      </div>
+    )
+}
+
+
+function ProviderForm(){
     const [provider, setProvider] = useState(new Provider(null, null, null, null))
     const [serviceItem, setServiceItem] = useState(new ServiceItem(null, null, null, null))
     const [logoImage, setLogoImage] = useState<File | null>(null)
