@@ -36,13 +36,13 @@ export class Customer{
 
 export class Provider{
     private _name: string | null;
-    private _id: number | null;
+    private _logoUrl: string | null;
     private _description: string | null;
     private _services: ServiceItem[] | null;
 
-    constructor(name: string | null, id: number | null, description: string | null, services: ServiceItem[] | null) {
+    constructor(name: string | null, logoUrl: string | null, description: string | null, services: ServiceItem[] | null) {
         this._name = name;
-        this._id = id;
+        this._logoUrl = logoUrl;
         this._description = description;
         this._services = services;
     }
@@ -55,12 +55,12 @@ export class Provider{
         this._name = value;
     }
 
-    get id(): number | null {
-        return this._id;
+    get logoUrl(): string | null {
+        return this._logoUrl;
     }
 
-    set id(value: number | null) {
-        this._id = value;
+    set logoUrl(value: string | null) {
+        this._logoUrl = value;
     }
 
     get description(): string | null {
