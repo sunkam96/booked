@@ -2,6 +2,7 @@ import Services from './pages/Services.tsx'
 import Confirm from './pages/Confirm.tsx'
 import Booked from './pages/Booked.tsx'
 import Availability from './pages/Availability.tsx'
+import RegisterProvider from './pages/RegisterProvider.tsx'
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router"
 import { BookingData } from './data.ts'
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Services bookingData={bookingData} setBookingData={setBookingData}/>} />
         <Route path="/:providerId" element={<Services bookingData={bookingData} setBookingData={setBookingData}/>} />
+        <Route path="/register" element={<RegisterProvider />} />
         <Route path="/services" element={<Services bookingData={bookingData} setBookingData={setBookingData}/>} />
         <Route path="/services/:providerId" element={<Services bookingData={bookingData} setBookingData={setBookingData}/>} />
         <Route path="/availability" element={<Availability bookingData={bookingData} setBookingData={setBookingData}/>} />

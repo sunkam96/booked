@@ -49,8 +49,22 @@ async function writeBookingData(bookingData: BookingData) {
       }
     });
   } catch (e) {
-    console.error("Error adding document: ", bookingData, e);
+    console.error("Error writing booking data: ", bookingData, e);
   }
 }
 
-export {fetchProviderDetails, writeBookingData}
+async function writeNewProvider(provider: Provider) {
+  try {
+    const providersRef = collection(db, "providers");
+    await addDoc(providersRef, {
+      name: provider.name,
+      id: provider.id,
+      description: provider.description,
+      services: provider.services
+    });
+  } catch (e) {
+    console.error("Error writing new provider: ", provider, e);
+  }
+}
+
+export {fetchProviderDetails, writeBookingData, writeNewProvider}
