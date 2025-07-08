@@ -27,9 +27,9 @@ function BackButton(props: any){
 }
 
 function CommonLogo(props: any){
-    console.log("CommonLogo props: ", props)
+    const backgroundLogo = props.logoUrl? `url(${props.logoUrl})` :  `url(${"./assets/blankheroimage.svg"})`
     const styles = {
-        background: `url(${props.logoUrl}) no-repeat center center`,
+        background: `${backgroundLogo} no-repeat center center`,
     }
     return (
       <div className="logo-container" style={styles}>
