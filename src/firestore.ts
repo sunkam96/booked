@@ -16,8 +16,8 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 
-async function fetchProviderDetails(providerId: number) {
-  const providerQuery = query(collection(db, "providers"), where("id", "==", providerId))
+async function fetchProviderDetails(providerName: string) {
+  const providerQuery = query(collection(db, "providers"), where("name", "==", providerName))
   const querySnapshot = await getDocs(providerQuery);
   if (querySnapshot.empty) {
     return null;

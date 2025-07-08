@@ -14,12 +14,11 @@ import {useState} from 'react'
 
 function Availability(props: any){
     const providerName = props.bookingData.provider.name
-    const providerId = props.bookingData.provider.id
     const [serviceDate, setServiceDate] = useState(props.bookingData.serviceDate? props.bookingData.serviceDate : new Date())
     return (
       <div className="page-frame">
         <div className="page-container">
-          <CommonHeader showBack={true} backLink={"/services/"+providerId} headerText={providerName}/>
+          <CommonHeader showBack={true} backLink={"/" + providerName + "/services"} headerText={providerName}/>
           <CommonLabel label="Availability" />
           <AvailabilityDatePicker serviceDate={serviceDate} setServiceDate={setServiceDate} bookingData={props.bookingData} setBookingData={props.setBookingData}/>
           <SlotsTable serviceDate={serviceDate} setServiceDate={setServiceDate} bookingData={props.bookingData} setBookingData={props.setBookingData} providerName={providerName}/>
@@ -52,7 +51,7 @@ function SlotsTable(props: any){
             <Stack direction="column" spacing={2}>
                 {slots.map(function(slot: any, i: number){
                     return (
-                        <Link key={i} to={"/confirm/" + props.bookingData.provider.id} onClick={() => bookSlot(slot, props.bookingData, props.setBookingData)}>
+                        <Link key={i} to={"/"+props.bookingData.provider.name + "/confirm"} onClick={() => bookSlot(slot, props.bookingData, props.setBookingData)}>
                             <Chip key={i} label={slot.toLocaleTimeString()} variant="outlined"/>
                         </Link>
                     )

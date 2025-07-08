@@ -15,9 +15,9 @@ import {DEFAULT_TESTING_PROVIDER} from '../defaults'
 function Services(props: any){
 
     const [services, setServices] = useState<ServiceItem[]>([])
-    const {providerId} = useParams()
-    const defaultProvider = props.bookingData?.provider?.id ?? DEFAULT_TESTING_PROVIDER
-    const currentProvider = providerId ? +providerId : +defaultProvider // number not string
+    const {providerName} = useParams()
+    const defaultProvider = props.bookingData?.provider?.name ?? DEFAULT_TESTING_PROVIDER
+    const currentProvider = providerName ? providerName : defaultProvider // number not string
 
     useEffect(() => {
             fetchProviderDetails(currentProvider).then(provider => {
@@ -57,7 +57,7 @@ function ServicesList(props: any){
 
 function ServiceItemCard(props: any){
     return (
-        <Link to={"/availability/" + props.bookingData.provider.id} className="service-item" onClick={()=>{updateBookingData(props.serviceItem, props.bookingData, props.setBookingData)}}>
+        <Link to={"/"+props.bookingData.provider.name + "/availability"} className="service-item" onClick={()=>{updateBookingData(props.serviceItem, props.bookingData, props.setBookingData)}}>
             <Card sx={{minWidth: '100%', display: 'flex', flexDirection: 'row' }}>
                 <CardContent sx={{minWidth: '70%', display: 'flex', flexDirection: 'column' }}>
                     <Typography gutterBottom sx={{ color: 'text.primary', fontSize: 18 }}>

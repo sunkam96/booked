@@ -13,7 +13,7 @@ function Confirm(props: any){
     return (
         <div className="page-frame">
             <div className="page-container">
-                <CommonHeader showBack={true} backLink={"/availability/"+props.bookingData.provider.id} headerText={props.bookingData.provider.name}/>
+                <CommonHeader showBack={true} backLink={"/"+props.bookingData.provider.name+"/availability"} headerText={props.bookingData.provider.name}/>
                 <CommonLabel label="Confirm Booking"/>
                 <ConfirmBooking bookingData={props.bookingData} setBookingData={props.setBookingData}/>
             </div>
@@ -51,7 +51,7 @@ function ConfirmBooking(props: any){
                 <TextField id="name" label="Name" variant="outlined" onChange={(evt) => handleInputChange(evt, "name", props.bookingData, props.setBookingData)} />
                 <TextField id="email" label="Email" variant="outlined" onChange={(evt) => handleInputChange(evt, "email", props.bookingData, props.setBookingData)}/>
                 <TextField id="phone" label="Phone" variant="outlined" onChange={(evt) => handleInputChange(evt, "phone", props.bookingData, props.setBookingData)} />
-                <Link to={"/booked/" + props.bookingData.provider.id} onClick={() => handleConfirm(props.bookingData)}>
+                <Link to={"/"+props.bookingData.provider.name + "/booked"} onClick={() => handleConfirm(props.bookingData)}>
                     <Button variant="contained">Confirm</Button>
                 </Link>
             </Box>
