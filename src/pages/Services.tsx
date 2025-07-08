@@ -36,7 +36,7 @@ function Services(props: any){
     return (
         <div className="page-frame">
             <div className="page-container">
-                <CommonHeader showBack={false} backLink="/" headerText={props.bookingData?.provider?.name ?? ''}/>
+                <CommonHeader showBack={false} backLink="/" headerText={props.bookingData?.provider?.name ?? ''} logoUrl={props.bookingData.provider?.logoUrl ?? ''}/>
                 <CommonLabel label="Services"/>
                 <ServicesList services={services} bookingData={props.bookingData} setBookingData={props.setBookingData}/>
             </div>

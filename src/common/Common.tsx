@@ -1,23 +1,22 @@
 import '../App.css'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import {Link } from "react-router";
-import { CommonHeaderProps } from '../model';
 
-function CommonHeader(props: CommonHeaderProps){
+function CommonHeader(props: any){
     return (
         <div className="header-container">
             <div className="header-left">
                 <BackButton {...props}/>
             </div>
             <div className="header-right">
-                <CommonLogo/>
+                <CommonLogo {...props}/>
                 <CommonHeaderText {...props}/>
             </div>
         </div>
     )
 }
 
-function BackButton(props: CommonHeaderProps){
+function BackButton(props: any){
     return (
         <div className={props.showBack?"back-button": "back-button hide-visibility"}>
             <Link to={props.backLink}>
@@ -27,14 +26,18 @@ function BackButton(props: CommonHeaderProps){
     )
 }
 
-function CommonLogo(){
+function CommonLogo(props: any){
+    console.log("CommonLogo props: ", props)
+    const styles = {
+        background: `url(${props.logoUrl}) no-repeat center center`,
+    }
     return (
-      <div className="logo-container">
+      <div className="logo-container" style={styles}>
       </div>
     )
 }
 
-function CommonHeaderText(props: CommonHeaderProps){
+function CommonHeaderText(props: any){
     return (
         <div className="header-text">
             <p><b>{props.headerText}</b></p>
