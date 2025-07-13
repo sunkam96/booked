@@ -29,12 +29,12 @@ body {
 .page-container {
   min-height: 100%;
   width: 100%;
-  max-height: 850px;
   max-width: 420px;
   display: flex;
   flex-direction: column;
   background-color: #E4F2FF;
   align-items: center;
+  overflow-y: scroll;
 }
 
 .logo-container {
