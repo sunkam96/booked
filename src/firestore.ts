@@ -32,54 +32,48 @@ async function fetchProviderDetails(providerName: string) {
 }
 
 async function writeBookingData(bookingData: BookingData) {
-  try {
-    const bookingsRef = collection(db, "bookings");
-    await addDoc(bookingsRef, {
-      provider: {
-        name: bookingData?.provider?.name,
-      },
-      serviceItem: {
-        service: bookingData?.serviceItem?.service,
-      },
-      serviceDate: bookingData.serviceDate,
-      customer: {
-        name: bookingData?.customer?.name,
-        email: bookingData?.customer?.email,
-        phone: bookingData?.customer?.phone
-      }
-    });
-  } catch (e) {
-    console.error("Error writing booking data: ", bookingData, e);
-  }
+  const bookingsRef = collection(db, "bookings");
+  await addDoc(bookingsRef, {
+    provider: {
+      name: bookingData?.provider?.name,
+    },
+    serviceItem: {
+      service: bookingData?.serviceItem?.service,
+    },
+    serviceDate: bookingData.serviceDate,
+    customer: {
+      name: bookingData?.customer?.name,
+      email: bookingData?.customer?.email,
+      phone: bookingData?.customer?.phone
+    }
+  });
 }
 
 async function saveProviderLogoImage(logoImage: File ){
-  try {
-      const storage = getStorage(app);
-      const storageRef = ref(storage, `images/${logoImage.name}`);
+  const storage = getStorage(app);
+  const storageRef = ref(storage, `images/${logoImage.name}`);
 
-      const snapshot = await uploadBytes(storageRef, logoImage);
+  const snapshot = await uploadBytes(storageRef, logoImage);
 
-      const url = await getDownloadURL(snapshot.ref);
-      return url;
-
-    } catch (err) {
-      console.error('Error uploading provider logo:', err);
-  }
+  const url = await getDownloadURL(snapshot.ref);
+  return url;
 }
 
 async function writeNewProvider(provider: Provider) {
-  try {
-    const providersRef = collection(db, "providers");
-    await addDoc(providersRef, {
-      name: provider.name,
-      logoUrl: provider.logoUrl,
-      description: provider.description,
-      services: provider.services
-    });
-  } catch (e) {
-    console.error("Error writing new provider: ", provider, e);
-  }
+  const providersRef = collection(db, "providers");
+  // Convert ServiceItem instances to plain objects
+  const plainServices = (provider.services ?? []).map((service: ServiceItem) => ({
+    service: service.service,
+    description: service.description,
+    price: service.price,
+    duration: service.time
+  }));
+  return await addDoc(providersRef, {
+    name: provider.name,
+    logoUrl: provider.logoUrl,
+    description: provider.description,
+    services: plainServices
+  });
 }
 
 export {fetchProviderDetails, writeBookingData, writeNewProvider, saveProviderLogoImage}
