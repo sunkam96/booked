@@ -7,13 +7,14 @@ import Typography from '@mui/material/Typography';
 import {Link} from "react-router";
 import {Customer} from '../data';
 import {writeBookingData} from '../firestore';
+import Views from '../common/util'
 
 function Confirm(props: any){
     
     return (
         <div className="page-frame">
             <div className="page-container">
-                <CommonHeader showBack={true} backLink={"/"+props.bookingData.provider.name+"/availability"} headerText={props.bookingData.provider.name}/>
+                <CommonHeader showBack={true} bookingData={props.bookingData} view={Views.CONFIRM}/>
                 <CommonLabel label="Confirm Booking"/>
                 <ConfirmBooking bookingData={props.bookingData} setBookingData={props.setBookingData}/>
             </div>
