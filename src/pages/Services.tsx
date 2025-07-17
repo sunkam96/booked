@@ -9,7 +9,7 @@ import {Link, useParams, useNavigate} from "react-router";
 import {fetchProviderDetails} from '../firestore'
 import {useState, useEffect} from 'react'
 import {DEFAULT_TESTING_PROVIDER} from '../defaults'
-
+import Views from '../common/util'
 
 function Services(props: any){
 
@@ -40,7 +40,7 @@ function Services(props: any){
     return (
         <div className="page-frame">
             <div className="page-container">
-                <CommonHeader showBack={false} backLink="/" headerText={props.bookingData?.provider?.name ?? ''} logoUrl={props.bookingData.provider?.logoUrl ?? ''}/>
+                <CommonHeader bookingData={props.bookingData} view={Views.SERVICES}/>
                 <CommonLabel label="Services"/>
                 <ServicesList services={services} bookingData={props.bookingData} setBookingData={props.setBookingData}/>
             </div>

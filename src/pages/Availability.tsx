@@ -10,7 +10,7 @@ import {Link} from "react-router";
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import {useState} from 'react'
-
+import Views from '../common/util'
 
 function Availability(props: any){
     const providerName = props.bookingData.provider.name
@@ -18,7 +18,7 @@ function Availability(props: any){
     return (
       <div className="page-frame">
         <div className="page-container">
-          <CommonHeader showBack={true} backLink={"/" + providerName + "/services"} headerText={providerName}/>
+          <CommonHeader bookingData={props.bookingData} view={Views.AVAILABILITY}/>
           <CommonLabel label="Availability" />
           <AvailabilityDatePicker serviceDate={serviceDate} setServiceDate={setServiceDate} bookingData={props.bookingData} setBookingData={props.setBookingData}/>
           <SlotsTable serviceDate={serviceDate} setServiceDate={setServiceDate} bookingData={props.bookingData} setBookingData={props.setBookingData} providerName={providerName}/>
