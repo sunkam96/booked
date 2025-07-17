@@ -5,11 +5,10 @@ import {CommonHeader, CommonLabel} from '../common/Common';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import {Link, useParams} from "react-router";
+import {Link, useParams, useNavigate} from "react-router";
 import {fetchProviderDetails} from '../firestore'
 import {useState, useEffect} from 'react'
 import {DEFAULT_TESTING_PROVIDER} from '../defaults'
-
 
 
 function Services(props: any){
@@ -18,9 +17,10 @@ function Services(props: any){
     const {providerName} = useParams()
     const defaultProvider = props.bookingData?.provider?.name ?? DEFAULT_TESTING_PROVIDER
     const currentProvider = providerName ? providerName : defaultProvider // number not string
+    const navigate = useNavigate();
 
     useEffect(() => {
-            fetchProviderDetails(currentProvider).then(provider => {
+        fetchProviderDetails(currentProvider).then(provider => {
             if(provider){
                 // update the services and provider in the booking data
                 setServices(provider.services ? provider.services : [])
@@ -29,8 +29,12 @@ function Services(props: any){
                     provider: provider
                 })
             }
+            else {
+                console.error("No provider found with the name: " + currentProvider + ". Redirecting to error page.");
+                navigate('/error');
+            }
         }).catch((error) => {
-            console.error("Error fetching provider details: ", error);
+            console.error("Error fetching provider details.", error);
         })}, [])
 
     return (
