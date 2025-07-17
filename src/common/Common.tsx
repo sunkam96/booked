@@ -1,4 +1,4 @@
-import '../App.css'
+import './Common.css'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import {Link } from "react-router";
 
