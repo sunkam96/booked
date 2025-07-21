@@ -10,6 +10,7 @@ import {useState} from 'react'
 import {Provider, ServiceItem} from '../data';
 import {writeNewProvider, saveProviderLogoImage} from '../firestore';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
 const NAVIGATION_TO_SERVICES_WAIT_TIME = 2500; // milliseconds
 
@@ -51,6 +52,12 @@ function addAdditionalServiceItem(evt: any, serviceItems: ServiceItem[], setServ
     evt.preventDefault();
     const newServiceItem = new ServiceItem(null, null, null, null);
     setServiceItems([...serviceItems, newServiceItem]);
+}
+
+function removeServiceItem(evt: any, index: number, serviceItems: ServiceItem[], setServiceItems: any){
+    evt.preventDefault();
+    const updatedServiceItems = serviceItems.filter((_, i) => i !== index);
+    setServiceItems(updatedServiceItems);
 }
 
 function RegisterProvider(){
@@ -125,6 +132,8 @@ function ServiceItemCard(props: any){
             <TextField id="description" label="Description" variant="outlined" onChange={(evt) => handleServiceItemChangeEvent(evt, props.index, "description", props.serviceItems, props.setServiceItems)}/>
             <TextField id="price" type="number" label="Price" variant="outlined" onChange={(evt) => handleServiceItemChangeEvent(evt, props.index,"price", props.serviceItems, props.setServiceItems)}/>
             <TextField id="duration" type="number" label="Duration (minutes)" variant="outlined" onChange={(evt) => handleServiceItemChangeEvent(evt, props.index,"time", props.serviceItems, props.setServiceItems)}/>
+            <RemoveCircleOutlineIcon onClick={(evt) => removeServiceItem(evt, props.index, props.serviceItems, props.setServiceItems)} style={{cursor: 'pointer'}}/>
+
         </div>
     )
 }
