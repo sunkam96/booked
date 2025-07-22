@@ -42,6 +42,7 @@ body {
   display: flex;
   flex-direction: column;
   /* background-color: #E4F2FF; */
+  /* background-color: #E0F6FF; */
   border: 1px solid black;
   align-items: center;
   overflow-y: scroll;
@@ -168,4 +169,13 @@ body {
   text-align: center;
   margin-top: 10%;
   width: 70%
+}
+
+.signup-provider-label {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 40px;
+  margin-bottom: 32px;
+  text-align: center;
+  letter-spacing: 0.5px;
 }
