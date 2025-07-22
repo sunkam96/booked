@@ -1,5 +1,4 @@
 import '../App.css'
-import {CommonLabel} from '../common/Common';
 import '../App.css'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -64,7 +63,7 @@ function RegisterProvider(){
     return (
       <div className="page-frame">
         <div className="page-container">
-          <CommonLabel label={"Signup as a provider"} />
+          <div className="signup-provider-label">Signup as a provider</div>
           <ProviderForm/>
         </div>
       </div>
@@ -128,12 +127,11 @@ function ServiceItems(props: any){
 function ServiceItemCard(props: any){
     return(
         <div className="service-item-card">
+            <RemoveCircleOutlineIcon onClick={(evt) => removeServiceItem(evt, props.index, props.serviceItems, props.setServiceItems)} style={{cursor: 'pointer', marginBottom: '1%'}}/>
             <TextField id="service" label="Service" variant="outlined" onChange={(evt) => handleServiceItemChangeEvent(evt, props.index, "service", props.serviceItems, props.setServiceItems)}/>
             <TextField id="description" label="Description" variant="outlined" onChange={(evt) => handleServiceItemChangeEvent(evt, props.index, "description", props.serviceItems, props.setServiceItems)}/>
             <TextField id="price" type="number" label="Price" variant="outlined" onChange={(evt) => handleServiceItemChangeEvent(evt, props.index,"price", props.serviceItems, props.setServiceItems)}/>
             <TextField id="duration" type="number" label="Duration (minutes)" variant="outlined" onChange={(evt) => handleServiceItemChangeEvent(evt, props.index,"time", props.serviceItems, props.setServiceItems)}/>
-            <RemoveCircleOutlineIcon onClick={(evt) => removeServiceItem(evt, props.index, props.serviceItems, props.setServiceItems)} style={{cursor: 'pointer'}}/>
-
         </div>
     )
 }
