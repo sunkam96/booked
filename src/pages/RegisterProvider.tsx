@@ -128,12 +128,11 @@ function ServiceItems(props: any){
 function ServiceItemCard(props: any){
     return(
         <div className="service-item-card">
+            <RemoveCircleOutlineIcon onClick={(evt) => removeServiceItem(evt, props.index, props.serviceItems, props.setServiceItems)} style={{cursor: 'pointer'}}/>
             <TextField id="service" label="Service" variant="outlined" onChange={(evt) => handleServiceItemChangeEvent(evt, props.index, "service", props.serviceItems, props.setServiceItems)}/>
             <TextField id="description" label="Description" variant="outlined" onChange={(evt) => handleServiceItemChangeEvent(evt, props.index, "description", props.serviceItems, props.setServiceItems)}/>
             <TextField id="price" type="number" label="Price" variant="outlined" onChange={(evt) => handleServiceItemChangeEvent(evt, props.index,"price", props.serviceItems, props.setServiceItems)}/>
             <TextField id="duration" type="number" label="Duration (minutes)" variant="outlined" onChange={(evt) => handleServiceItemChangeEvent(evt, props.index,"time", props.serviceItems, props.setServiceItems)}/>
-            <RemoveCircleOutlineIcon onClick={(evt) => removeServiceItem(evt, props.index, props.serviceItems, props.setServiceItems)} style={{cursor: 'pointer'}}/>
-
         </div>
     )
 }
