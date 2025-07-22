@@ -38,12 +38,20 @@ export class Provider{
     private _name: string | null;
     private _logoUrl: string | null;
     private _description: string | null;
+    private _email: string | null;
     private _services: ServiceItem[] | null;
 
-    constructor(name: string | null, logoUrl: string | null, description: string | null, services: ServiceItem[] | null) {
+    constructor(
+        name: string | null,
+        logoUrl: string | null,
+        description: string | null,
+        email: string | null,
+        services: ServiceItem[] | null
+    ) {
         this._name = name;
         this._logoUrl = logoUrl;
         this._description = description;
+        this._email = email;
         this._services = services;
     }
 
@@ -69,6 +77,14 @@ export class Provider{
 
     set description(value: string | null) {
         this._description = value;
+    }
+
+    get email(): string | null {
+        return this._email;
+    }
+
+    set email(value: string | null) {
+        this._email = value;
     }
 
     get services(): ServiceItem[] | null {

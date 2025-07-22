@@ -33,7 +33,15 @@ function handleFormSubmit(evt: any, provider: any, serviceItems: any, logoImage:
     evt.preventDefault();
     saveProviderLogoImage(logoImage).then((downloadUrl) => {
         if(downloadUrl){
-            writeNewProvider(new Provider(provider.name, downloadUrl, provider.description, serviceItems)).then(() => {
+            writeNewProvider(
+                new Provider(
+                    provider.name,
+                    downloadUrl,
+                    provider.description,
+                    provider.email,
+                    serviceItems
+                )
+            ).then(() => {
                 setTimeout(() =>{
                     navigate(`/${provider.name}/services`)
                 }, NAVIGATION_TO_SERVICES_WAIT_TIME);
@@ -82,7 +90,7 @@ function handleServiceItemChangeEvent(evt: any, index: any, field: keyof Service
 
 
 function ProviderForm(){
-    const [provider, setProvider] = useState(new Provider(null, null, null, null))
+    const [provider, setProvider] = useState(new Provider(null, null, null, null, null))
     const [serviceItems, setServiceItems] = useState<ServiceItem[]>([])
     const [logoImage, setLogoImage] = useState<File | null>(null)
     const navigate = useNavigate()

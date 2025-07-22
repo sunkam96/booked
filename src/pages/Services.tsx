@@ -21,6 +21,7 @@ function Services(props: any){
 
     useEffect(() => {
         fetchProviderDetails(currentProvider).then(provider => {
+            console.log("Fetched provider details: ", provider);
             if(provider){
                 // update the services and provider in the booking data
                 setServices(provider.services ? provider.services : [])
