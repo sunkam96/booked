@@ -16,6 +16,22 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+async function fetchAllProviders(){
+  const providerQuery = query(collection(db, "providers"))
+  const querySnapshot = await getDocs(providerQuery);
+  if (querySnapshot.empty) {
+    return null;
+  }
+  const providers = querySnapshot.docs;
+  const providerList: Provider[] = [];
+  providers.forEach((provider: any) => {
+    // Don't need to fetch services here
+    const providerData = provider.data();
+    providerList.push(new Provider(providerData.name, providerData.logoUrl, providerData.description, providerData.email, null));
+  })
+
+  return providerList;
+}
 
 async function fetchProviderDetails(providerName: string) {
   const providerQuery = query(collection(db, "providers"), where("name", "==", providerName))
@@ -77,4 +93,4 @@ async function writeNewProvider(provider: Provider) {
   });
 }
 
-export {fetchProviderDetails, writeBookingData, writeNewProvider, saveProviderLogoImage}
+export {fetchAllProviders, fetchProviderDetails, writeBookingData, writeNewProvider, saveProviderLogoImage}
