@@ -6,6 +6,7 @@ import {Provider} from '../data';
 
 function Providers (props: any) {
 
+    props; // eventually will use props, for now needed to avoid unused variable warning
     const [providers, setProviders] = useState<Provider[]>([]);
 
     useEffect(() => {
