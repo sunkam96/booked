@@ -179,3 +179,18 @@ body {
   text-align: center;
   letter-spacing: 0.5px;
 }
+
+.provider-card-container {
+  display: flex;
+  direction: row;
+  justify-content: center;;
+}
+
+.provider-link {
+  text-decoration: none;
+  width: 75%;
+}
+
+.provider-card {
+  display: flex;
+}
