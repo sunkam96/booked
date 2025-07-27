@@ -18,7 +18,6 @@ function App() {
         <Route path="/" element={<Providers bookingData={bookingData} setBookingData={setBookingData} />} />
         <Route path="/providers" element={<Providers bookingData={bookingData} setBookingData={setBookingData} />} />
         <Route path="/:providerName" element={<Services bookingData={bookingData} setBookingData={setBookingData}/>} />
-        <Route path="/services" element={<Services bookingData={bookingData} setBookingData={setBookingData}/>} />
         <Route path="/:providerName/services" element={<Services bookingData={bookingData} setBookingData={setBookingData}/>} />
         <Route path="/:providerName/availability" element={<Availability bookingData={bookingData} setBookingData={setBookingData}/>} />
         <Route path="/:providerName/confirm" element={<Confirm bookingData={bookingData} setBookingData={setBookingData}/>} />
