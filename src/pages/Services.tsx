@@ -46,7 +46,6 @@ function Services(props: any){
                 <ServicesList services={services} bookingData={props.bookingData} setBookingData={props.setBookingData}/>
             </div>
         </div>
-
     )
 }
 
