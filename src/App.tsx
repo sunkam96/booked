@@ -4,6 +4,7 @@ import Booked from './pages/Booked.tsx'
 import Availability from './pages/Availability.tsx'
 import RegisterProvider from './pages/RegisterProvider.tsx'
 import Providers from './pages/Providers.tsx'
+import Auth from './pages/Auth.tsx'
 import Error from './pages/Error.tsx'
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router"
@@ -18,13 +19,13 @@ function App() {
         <Route path="/" element={<Providers bookingData={bookingData} setBookingData={setBookingData} />} />
         <Route path="/providers" element={<Providers bookingData={bookingData} setBookingData={setBookingData} />} />
         <Route path="/:providerName" element={<Services bookingData={bookingData} setBookingData={setBookingData}/>} />
-        <Route path="/services" element={<Services bookingData={bookingData} setBookingData={setBookingData}/>} />
         <Route path="/:providerName/services" element={<Services bookingData={bookingData} setBookingData={setBookingData}/>} />
         <Route path="/:providerName/availability" element={<Availability bookingData={bookingData} setBookingData={setBookingData}/>} />
         <Route path="/:providerName/confirm" element={<Confirm bookingData={bookingData} setBookingData={setBookingData}/>} />
         <Route path="/:providerName/booked" element={<Booked bookingData={bookingData} setBookingData={setBookingData}/>} />
         <Route path="/register" element={<RegisterProvider />} />
         <Route path="/error" element={<Error />} />
+        <Route path="/auth" element={<Auth />} />
       </Routes>
     </BrowserRouter>
   )

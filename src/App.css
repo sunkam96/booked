@@ -6,11 +6,6 @@ html, body {
   height: 100%
 } 
 
-/* Useful for debugging */
-/* div {
-  border: 1px dotted black;
-} */
-
 body {
   display: flex;
   flex-direction: column;
