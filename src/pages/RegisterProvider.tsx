@@ -43,7 +43,7 @@ function handleFormSubmit(evt: any, provider: any, serviceItems: any, logoImage:
                 )
             ).then(() => {
                 setTimeout(() =>{
-                    navigate(`/${provider.name}/services`)
+                    navigate(`/auth`, {state : {providerName: provider.name}});
                 }, NAVIGATION_TO_SERVICES_WAIT_TIME);
             }).catch((error) => {
                 console.log("Unable to create new provider", error)
@@ -109,7 +109,7 @@ function ProviderForm(){
                 <TextField id="phone" type="tel" label="Phone" variant="outlined" onChange={(evt) => handleFormChange(evt, "phone", provider, setProvider)}/>
                 <ServiceItems serviceItems={serviceItems} setServiceItems={setServiceItems}/>
                 <Input id="logo" type="file" onChange={(evt) => handleLogoImageChange(evt, setLogoImage)}/>
-                <Link to={"/services"} onClick={(evt) => handleFormSubmit(evt, provider, serviceItems, logoImage, navigate)}>
+                <Link to={"/auth"} onClick={(evt) => handleFormSubmit(evt, provider, serviceItems, logoImage, navigate)}>
                     <Button variant="contained">Confirm</Button>
                 </Link>
             </Box>

@@ -25,7 +25,7 @@ function App() {
         <Route path="/:providerName/booked" element={<Booked bookingData={bookingData} setBookingData={setBookingData}/>} />
         <Route path="/register" element={<RegisterProvider />} />
         <Route path="/error" element={<Error />} />
-        <Route path="/auth" element={<Auth />} />
+        <Route path="/auth" element={<Auth bookingData={bookingData} setBookingData={setBookingData} />} />
       </Routes>
     </BrowserRouter>
   )
