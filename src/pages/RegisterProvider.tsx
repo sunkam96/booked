@@ -43,7 +43,7 @@ function handleFormSubmit(evt: any, provider: any, serviceItems: any, logoImage:
                 )
             ).then(() => {
                 setTimeout(() =>{
-                    navigate(`/auth`, {state : {providerName: provider.name}});
+                    navigate(`/auth`, {state : {providerId: provider.name}});
                 }, NAVIGATION_TO_SERVICES_WAIT_TIME);
             }).catch((error) => {
                 console.log("Unable to create new provider", error)
