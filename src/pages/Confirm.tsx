@@ -36,6 +36,34 @@ function handleInputChange(evt: any, field: any, bookingData: any, setBookingDat
 
 function handleConfirm(bookingData: any){
     writeBookingData(bookingData);
+    addBookingToProviderCalendar(bookingData);
+}
+
+function addBookingToProviderCalendar(bookingData: any){
+    console.log("Adding booking to provider calendar for provider:", bookingData.provider.name);
+    return fetch('http://localhost:3000/confirm', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            providerId: bookingData.provider.name,
+            service: bookingData.serviceItem.service,
+            date: bookingData.serviceDate,
+            customerName: bookingData.customer.name,
+            customerEmail: bookingData.customer.email,
+            customerPhone: bookingData.customer.phone
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {     
+        const {eventId, eventLink} = data;
+        console.log("Event ID:", eventId);
+        console.log("Event Link:", eventLink);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 }
 
 function ConfirmBooking(props: any){
