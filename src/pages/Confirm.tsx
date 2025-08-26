@@ -16,7 +16,7 @@ function Confirm(props: any){
             <div className="page-container">
                 <CommonHeader showBack={true} bookingData={props.bookingData} view={Views.CONFIRM}/>
                 <CommonLabel label="Confirm Booking"/>
-                <ConfirmBooking bookingData={props.bookingData} setBookingData={props.setBookingData}/>
+                <ConfirmBooking bookingData={props.bookingData} setBookingData={props.setBookingData} setEventLink={props.setEventLink} />
             </div>
         </div>
     )
@@ -34,12 +34,12 @@ function handleInputChange(evt: any, field: any, bookingData: any, setBookingDat
     })
 }
 
-function handleConfirm(bookingData: any){
+function handleConfirm(bookingData: any, setEventLink: any){
     writeBookingData(bookingData);
-    addBookingToProviderCalendar(bookingData);
+    addBookingToProviderCalendar(bookingData, setEventLink);
 }
 
-function addBookingToProviderCalendar(bookingData: any){
+function addBookingToProviderCalendar(bookingData: any, setEventLink: any){
     console.log("Adding booking to provider calendar for provider:", bookingData.provider.name);
     return fetch('http://localhost:3000/confirm', {
         method: 'POST',
@@ -60,6 +60,9 @@ function addBookingToProviderCalendar(bookingData: any){
         const {eventId, eventLink} = data;
         console.log("Event ID:", eventId);
         console.log("Event Link:", eventLink);
+        if (eventLink) {
+            setEventLink(eventLink);
+        }
     })
     .catch((error) => {
         console.error('Error:', error);
@@ -80,7 +83,7 @@ function ConfirmBooking(props: any){
                 <TextField id="name" label="Name" variant="outlined" onChange={(evt) => handleInputChange(evt, "name", props.bookingData, props.setBookingData)} />
                 <TextField id="email" label="Email" variant="outlined" onChange={(evt) => handleInputChange(evt, "email", props.bookingData, props.setBookingData)}/>
                 <TextField id="phone" label="Phone" variant="outlined" onChange={(evt) => handleInputChange(evt, "phone", props.bookingData, props.setBookingData)} />
-                <Link to={"/"+props.bookingData.provider.name + "/booked"} onClick={() => handleConfirm(props.bookingData)}>
+                <Link to={"/"+props.bookingData.provider.name + "/booked"} onClick={() => handleConfirm(props.bookingData, props.setEventLink)}>
                     <Button variant="contained">Confirm</Button>
                 </Link>
             </Box>
