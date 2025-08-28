@@ -41,7 +41,7 @@ function handleConfirm(bookingData: any, setEventLink: any){
 
 function addBookingToProviderCalendar(bookingData: any, setEventLink: any){
     console.log("Adding booking to provider calendar for provider:", bookingData.provider.name);
-    return fetch('http://localhost:3000/confirm', {
+    return fetch(`${process.env.GOOGLE_API_URL}/confirm`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
