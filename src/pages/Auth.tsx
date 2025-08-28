@@ -4,7 +4,7 @@ import { useLocation } from "react-router";
 function Auth() {
     const location = useLocation();
     const { providerId } = location.state || {};
-    const googleApiUrL = import.meta.env.VITE_GOOGLE_API_URL;
+    const googleApiUrL = import.meta.env.GOOGLE_API_URL;
     return (
         <div className="page-frame">
             <div className="page-container">
