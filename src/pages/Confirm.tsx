@@ -9,7 +9,7 @@ import {Customer} from '../data';
 import {writeBookingData} from '../firestore';
 import Views from '../common/util'
 
-const googleApiUrL = import.meta.env.GOOGLE_API_URL;
+const googleApiUrL = import.meta.env.VITE_GOOGLE_API_URL;
 
 
 function Confirm(props: any){

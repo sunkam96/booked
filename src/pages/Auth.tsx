@@ -1,10 +1,11 @@
 import '../App.css';
 import { useLocation } from "react-router";
 
+const googleApiUrL = import.meta.env.GOOGLE_API_URL;
+
 function Auth() {
     const location = useLocation();
     const { providerId } = location.state || {};
-    const googleApiUrL = import.meta.env.GOOGLE_API_URL;
     return (
         <div className="page-frame">
             <div className="page-container">
