@@ -10,7 +10,6 @@ import {writeBookingData} from '../firestore';
 import Views from '../common/util'
 
 function Confirm(props: any){
-    
     return (
         <div className="page-frame">
             <div className="page-container">
@@ -40,8 +39,8 @@ function handleConfirm(bookingData: any, setEventLink: any){
 }
 
 function addBookingToProviderCalendar(bookingData: any, setEventLink: any){
-    console.log("Adding booking to provider calendar for provider:", bookingData.provider.name);
-    return fetch(`${process.env.GOOGLE_API_URL}/confirm`, {
+    const googleApiUrL = import.meta.env.VITE_GOOGLE_API_URL;
+    return fetch(`${googleApiUrL}/confirm`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
