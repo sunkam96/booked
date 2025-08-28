@@ -1,9 +1,10 @@
 import '../App.css';
 import { useLocation } from "react-router";
 
-const googleApiUrL = import.meta.env.GOOGLE_API_URL;
 
 function Auth() {
+    const googleApiUrL = import.meta.env.VITE_GOOGLE_API_URL;
+
     const location = useLocation();
     const { providerId } = location.state || {};
     return (
