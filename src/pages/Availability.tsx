@@ -10,6 +10,7 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import { useState } from 'react';
 import Views from '../common/util';
+import { BookingData } from '../data';
 
 function Availability(props: any) {
     const providerName = props.bookingData.provider.name;
