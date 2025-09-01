@@ -10,14 +10,14 @@ import { Customer } from '../data';
 import { writeBookingData } from '../firestore';
 import Views from '../common/util';
 
-function Confirm(props: any) {
+function Confirm(props: any){
     return (
         <Layout>
-            <CommonHeader showBack={true} bookingData={props.bookingData} view={Views.CONFIRM} />
-            <CommonLabel label="Confirm Booking" />
-            <ConfirmBooking bookingData={props.bookingData} setBookingData={props.setBookingData} />
+                <CommonHeader showBack={true} bookingData={props.bookingData} view={Views.CONFIRM}/>
+                <CommonLabel label="Confirm Booking"/>
+                <ConfirmBooking bookingData={props.bookingData} setBookingData={props.setBookingData} setEventLink={props.setEventLink} />
         </Layout>
-    );
+    )
 }
 
 function handleInputChange(evt: any, field: any, bookingData: any, setBookingData: any) {
@@ -32,8 +32,39 @@ function handleInputChange(evt: any, field: any, bookingData: any, setBookingDat
     })
 }
 
-function handleConfirm(bookingData: any) {
+function handleConfirm(bookingData: any, setEventLink: any){
     writeBookingData(bookingData);
+    addBookingToProviderCalendar(bookingData, setEventLink);
+}
+
+function addBookingToProviderCalendar(bookingData: any, setEventLink: any){
+    const googleApiUrL = import.meta.env.VITE_GOOGLE_API_URL;
+    return fetch(`${googleApiUrL}/confirm`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            providerId: bookingData.provider.name,
+            service: bookingData.serviceItem.service,
+            date: bookingData.serviceDate,
+            customerName: bookingData.customer.name,
+            customerEmail: bookingData.customer.email,
+            customerPhone: bookingData.customer.phone
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {     
+        const {eventId, eventLink} = data;
+        console.log("Event ID:", eventId);
+        console.log("Event Link:", eventLink);
+        if (eventLink) {
+            setEventLink(eventLink);
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 }
 
 function ConfirmBooking(props: any) {
@@ -50,7 +81,7 @@ function ConfirmBooking(props: any) {
                 <TextField id="name" label="Name" variant="outlined" onChange={(evt) => handleInputChange(evt, "name", props.bookingData, props.setBookingData)} />
                 <TextField id="email" label="Email" variant="outlined" onChange={(evt) => handleInputChange(evt, "email", props.bookingData, props.setBookingData)} />
                 <TextField id="phone" label="Phone" variant="outlined" onChange={(evt) => handleInputChange(evt, "phone", props.bookingData, props.setBookingData)} />
-                <Link to={"/" + props.bookingData.provider.name + "/booked"} onClick={() => handleConfirm(props.bookingData)}>
+                <Link to={"/"+props.bookingData.provider.name + "/booked"} onClick={() => handleConfirm(props.bookingData, props.setEventLink)}>
                     <Button variant="contained">Confirm</Button>
                 </Link>
             </Box>

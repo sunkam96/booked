@@ -13,6 +13,7 @@ import './index.css'
 
 function App() {
   const [bookingData, setBookingData] = useState(new BookingData(null, null, null, null, null))
+  const [eventLink, setEventLink] = useState<string | null>(null);
   return (
     <BrowserRouter>
       <Routes>
@@ -21,8 +22,8 @@ function App() {
         <Route path="/:providerName" element={<Services bookingData={bookingData} setBookingData={setBookingData}/>} />
         <Route path="/:providerName/services" element={<Services bookingData={bookingData} setBookingData={setBookingData}/>} />
         <Route path="/:providerName/availability" element={<Availability bookingData={bookingData} setBookingData={setBookingData}/>} />
-        <Route path="/:providerName/confirm" element={<Confirm bookingData={bookingData} setBookingData={setBookingData}/>} />
-        <Route path="/:providerName/booked" element={<Booked bookingData={bookingData} setBookingData={setBookingData}/>} />
+        <Route path="/:providerName/confirm" element={<Confirm bookingData={bookingData} setBookingData={setBookingData} setEventLink={setEventLink} />} />
+        <Route path="/:providerName/booked" element={<Booked bookingData={bookingData} setBookingData={setBookingData} eventLink={eventLink} />} />
         <Route path="/register" element={<RegisterProvider />} />
         <Route path="/error" element={<Error />} />
         <Route path="/auth" element={<Auth />} />
