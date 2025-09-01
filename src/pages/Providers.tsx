@@ -28,8 +28,7 @@ function Providers(props: any) {
                         <Link
                             key={index}
                             to={`/${provider.name}/services`}
-                            className="provider-link"
-                        >
+                                className="provider-link" >
                             <Card className="provider-card">
                                 <CardContent>
                                     <Typography sx={{ fontWeight: 600, fontSize: 20, color: '#1976d2' }}>

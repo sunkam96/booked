@@ -10,6 +10,7 @@ import {fetchProviderDetails} from '../firestore'
 import {useState, useEffect} from 'react'
 import {DEFAULT_TESTING_PROVIDER} from '../defaults'
 import Views from '../common/util'
+import Layout from '../common/Layout';
 
 function Services(props: any){
 
@@ -39,13 +40,11 @@ function Services(props: any){
         })}, [])
 
     return (
-        <div className="page-frame">
-            <div className="page-container">
-                <CommonHeader bookingData={props.bookingData} view={Views.SERVICES}/>
-                <CommonLabel label="Services"/>
-                <ServicesList services={services} bookingData={props.bookingData} setBookingData={props.setBookingData}/>
-            </div>
-        </div>
+        <Layout>
+            <CommonHeader bookingData={props.bookingData} view={Views.SERVICES}/>
+            <CommonLabel label="Services"/>
+            <ServicesList services={services} bookingData={props.bookingData} setBookingData={props.setBookingData}/>
+        </Layout>
     )
 }
 

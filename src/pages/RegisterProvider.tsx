@@ -10,6 +10,7 @@ import {Provider, ServiceItem} from '../data';
 import {writeNewProvider, saveProviderLogoImage} from '../firestore';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import Layout from '../common/Layout';
 
 const NAVIGATION_TO_SERVICES_WAIT_TIME = 2500; // milliseconds
 
@@ -69,13 +70,11 @@ function removeServiceItem(evt: any, index: number, serviceItems: ServiceItem[],
 
 function RegisterProvider(){
     return (
-      <div className="page-frame">
-        <div className="page-container">
-          <div className="signup-provider-label">Signup as a provider</div>
-          <ProviderForm/>
-        </div>
-      </div>
-    )
+        <Layout>
+            <div className="signup-provider-label">Signup as a provider</div>
+            <ProviderForm />
+        </Layout>
+    );
 }
 
 function handleServiceItemChangeEvent(evt: any, index: any, field: keyof ServiceItem, serviceItems: ServiceItem[], setServiceItems: any){
