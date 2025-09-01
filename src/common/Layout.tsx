@@ -12,10 +12,10 @@ function Layout({ children }: LayoutProps) {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                height: '100%', // Matches page-frame height
-                width: '100%', // Matches page-frame width
+                height: '100%',
+                width: '100%',
                 backgroundColor: '#f5f5f5',
-                overflow: 'hidden', // Prevents content overflow
+                overflow: 'hidden',
             }}
         >
             <Box
@@ -23,13 +23,13 @@ function Layout({ children }: LayoutProps) {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    height: '100%', // Matches page-container height
-                    width: '100%', // Matches page-container width
-                    maxWidth: '420px', // Matches page-container max-width
+                    height: '100%',
+                    width: '100%',
+                    maxWidth: '420px',
                     backgroundColor: '#fff',
                     border: '1px solid black',
                     borderRadius: '8px',
-                    overflowY: 'scroll', // Matches page-container overflow-y
+                    overflowY: 'scroll',
                     boxSizing: 'border-box',
                 }}
             >
