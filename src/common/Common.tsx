@@ -11,7 +11,7 @@ import Avatar from '@mui/material/Avatar';
 function CommonHeader(props: any) {
     const showBack = props.view !== Views.SERVICES;
     const providerName = props.bookingData?.provider?.name ?? '';
-    const logoUrl = props.bookingData.provider?.logoUrl ?? '';
+    const logoUrl = props.bookingData.provider?.logoUrl;
     let backLink = `/${providerName}`;
     switch (props.view) {
         case Views.SERVICES:
@@ -26,6 +26,9 @@ function CommonHeader(props: any) {
         case Views.BOOKED:
             backLink = `/${providerName}/confirm`;
             break;
+        case Views.AUTH:
+            backLink = `/${providerName}/services`;
+            break;
         default:
             backLink = `/${providerName}`;
             break;
@@ -39,7 +42,9 @@ function CommonHeader(props: any) {
                         <ArrowBackIcon />
                     </IconButton>
                 )}
-                <Avatar src={logoUrl} alt={providerName} sx={{ marginRight: 2 }} />
+                {logoUrl && (
+                    <Avatar src={logoUrl} alt={providerName} sx={{ marginRight: 2 }} />
+                )}
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     {providerName}
                 </Typography>

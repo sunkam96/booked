@@ -5,6 +5,7 @@ enum Views {
     BOOKED,
     ERROR,
     REGISTER,
+    AUTH,
 }
 
 export default Views;
