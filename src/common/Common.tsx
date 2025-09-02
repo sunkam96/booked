@@ -1,17 +1,24 @@
-import './Common.css'
+import './Common.css';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import {Link } from "react-router";
-import Views from '../common/util'
+import { Link } from "react-router";
+import Views from '../common/util';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
+import theme from './theme';
 
-function CommonHeader(props: any){
-    console.log("CommonHeader props: ", props);
-    const showBack = props.view !== Views.SERVICES;
-    const providerName = props.bookingData?.provider?.name ?? '';
-    const logoUrl = props.bookingData.provider?.logoUrl ?? '';
-    var backLink = `/${providerName}`;
-    switch(props.view){
+function CommonHeader(props: any) {
+    const PAGES_WITH_BACKLINK = [Views.AVAILABILITY, Views.CONFIRM, Views.BOOKED];
+    const showBack = PAGES_WITH_BACKLINK.includes(props.view);
+    const providerName = props?.bookingData?.provider?.name ?? '';
+    const logoUrl = props?.bookingData?.provider?.logoUrl;
+    let backLink = `/${providerName}`;
+    switch (props.view) {
         case Views.SERVICES:
-            backLink = "/";
+            break;
+        case Views.ERROR:
             break;
         case Views.AVAILABILITY:
             backLink = `/${providerName}/services`;
@@ -22,59 +29,51 @@ function CommonHeader(props: any){
         case Views.BOOKED:
             backLink = `/${providerName}/confirm`;
             break;
+        case Views.AUTH:
+            backLink = `/${providerName}/services`;
+            break;
         default:
             backLink = `/${providerName}`;
             break;
     }
 
     return (
-        <div className="header-container">
-            <div className="header-left">
-                <BackButton showBack={showBack} backLink={backLink}/>
-            </div>
-            <div className="header-right">
-                <CommonLogo logoUrl={logoUrl}/>
-                <CommonHeaderText headerText={providerName} />
-            </div>
-        </div>
-    )
+        <AppBar position="static" color="primary" sx={{ marginBottom: '16px' }}>
+            <Toolbar>
+                {showBack && (
+                    <IconButton edge="start" color="inherit" component={Link} to={backLink} sx={{ mr: 2 }}>
+                        <ArrowBackIcon />
+                    </IconButton>
+                )}
+                {logoUrl && providerName && (
+                    <Avatar src={logoUrl} alt={providerName} sx={{ marginRight: 2 }} />
+                )}
+                {logoUrl && providerName && (
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        {providerName}
+                    </Typography>
+                )}
+            </Toolbar>
+        </AppBar>
+    );
 }
 
-function BackButton(props: any){
-    return (
-        <div className={props.showBack?"back-button": "back-button hide-visibility"}>
-            <Link to={props.backLink}>
-                <ArrowBackIcon style={{ color: 'black' }}/>
-            </Link>
-        </div>
-    )
-}
+function CommonLabel(props: any) {
 
-function CommonLogo(props: any){
-    const backgroundLogo = props.logoUrl? `url(${props.logoUrl})` :  `url(${"./assets/blankheroimage.svg"})`
-    const styles = {
-        background: `${backgroundLogo} no-repeat center center`,
-    }
     return (
-      <div className="logo-container" style={styles}>
-      </div>
-    )
-}
-
-function CommonHeaderText(props: any){
-    return (
-        <div className="header-text">
-            <p><b>{props.headerText}</b></p>
-        </div>
-    )
-}
-
-function CommonLabel(props: any){
-    return (
-        <div className="label">
+        <Typography
+            variant="h5"
+            component="div"
+            sx={{
+                textAlign: 'center',
+                color: theme.palette.text.primary, // Dynamically sourced from the theme
+                fontWeight: 'bold',
+                marginBottom: '16px',
+            }}
+        >
             {props.label}
-        </div>
-    )
+        </Typography>
+    );
 }
 
-export {CommonHeader, CommonLabel}
+export { CommonHeader, CommonLabel };

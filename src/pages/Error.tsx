@@ -1,17 +1,55 @@
 import '../App.css';
 import Layout from '../common/Layout';
+import { CommonHeader, CommonLabel } from '../common/Common';
+import Views from '../common/util';
+import theme from '../common/theme';
+import Typography from '@mui/material/Typography';
 
-function Error() {
+function Error(props: any) {
+
     return (
         <Layout>
-            <div className="error-container" style={{ textAlign: 'center' }}>
-                <h1>Oops! Something went wrong.</h1>
-                <p>We couldn't find the page you were looking for.</p>
-                <p>Please check the URL or go back to the home page.</p>
-                <a href="/" style={{ color: '#1976d2', textDecoration: 'none', fontWeight: 'bold' }}>
-                    Go to Home
-                </a>
-            </div>
+            <CommonHeader view={Views.ERROR} />
+            <CommonLabel label="Error" />
+            {
+                props.errorMessage && (
+                     <Typography
+                        variant="h5"
+                        component="div"
+                        sx={{
+                            textAlign: 'center',
+                            color: theme.palette.text.secondary,
+                        }}
+                    >
+                        {props.errorMessage}
+                    </Typography>
+                )
+            }
+            {
+                !props.errorMessage && (
+                     <Typography
+                        variant="h5"
+                        component="div"
+                        sx={{
+                            textAlign: 'center',
+                            color: theme.palette.text.secondary,
+
+                        }}
+                    >
+                        Oops! Something went wrong. No page was found matching this url.
+                    </Typography>
+                )
+            }
+            <a
+                href="/"
+                style={{
+                    color: theme.palette.primary.main,
+                    textDecoration: 'none',
+                    fontWeight: 'bold',
+                }}
+            >
+                Go to Home
+            </a>
         </Layout>
     );
 }

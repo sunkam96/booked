@@ -1,5 +1,6 @@
 import React from 'react';
 import Box from '@mui/material/Box';
+import theme from '../common/theme';
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -14,7 +15,7 @@ function Layout({ children }: LayoutProps) {
                 alignItems: 'center',
                 height: '100%',
                 width: '100%',
-                backgroundColor: '#f5f5f5',
+                backgroundColor: theme.palette.background.default,
                 overflow: 'hidden',
             }}
         >
@@ -26,7 +27,7 @@ function Layout({ children }: LayoutProps) {
                     height: '100%',
                     width: '100%',
                     maxWidth: '420px',
-                    backgroundColor: '#fff',
+                    backgroundColor: theme.palette.background.default,
                     border: '1px solid black',
                     borderRadius: '8px',
                     overflowY: 'scroll',
