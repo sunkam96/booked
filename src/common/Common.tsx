@@ -48,7 +48,7 @@ function CommonHeader(props: any) {
                 {logoUrl && providerName && (
                     <Avatar src={logoUrl} alt={providerName} sx={{ marginRight: 2 }} />
                 )}
-                {providerName && (
+                {logoUrl && providerName && (
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         {providerName}
                     </Typography>
