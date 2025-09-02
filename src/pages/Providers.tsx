@@ -11,6 +11,7 @@ import Views from '../common/util';
 import theme from '../common/theme';
 
 function Providers(props: any) {
+    props;
     const [providers, setProviders] = useState<Provider[]>([]);
 
     useEffect(() => {
