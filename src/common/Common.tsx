@@ -7,6 +7,7 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
+import theme from './theme';
 
 function CommonHeader(props: any) {
     const NO_BACK_PAGES = [Views.SERVICES, Views.AUTH, Views.ERROR];
@@ -58,10 +59,20 @@ function CommonHeader(props: any) {
 }
 
 function CommonLabel(props: any) {
+
     return (
-        <div className="label">
+        <Typography
+            variant="h5"
+            component="div"
+            sx={{
+                textAlign: 'center',
+                color: theme.palette.text.primary, // Dynamically sourced from the theme
+                fontWeight: 'bold',
+                marginBottom: '16px',
+            }}
+        >
             {props.label}
-        </div>
+        </Typography>
     );
 }
 
