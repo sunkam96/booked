@@ -10,8 +10,8 @@ import Avatar from '@mui/material/Avatar';
 import theme from './theme';
 
 function CommonHeader(props: any) {
-    const NO_BACK_PAGES = [Views.SERVICES, Views.AUTH, Views.ERROR];
-    const showBack = !NO_BACK_PAGES.includes(props.view);
+    const PAGES_WITH_BACKLINK = [Views.AVAILABILITY, Views.CONFIRM, Views.BOOKED];
+    const showBack = PAGES_WITH_BACKLINK.includes(props.view);
     const providerName = props?.bookingData?.provider?.name ?? '';
     const logoUrl = props?.bookingData?.provider?.logoUrl;
     let backLink = `/${providerName}`;
