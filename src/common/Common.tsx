@@ -9,13 +9,15 @@ import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 
 function CommonHeader(props: any) {
-    const showBack = props.view !== Views.SERVICES;
-    const providerName = props.bookingData?.provider?.name ?? '';
-    const logoUrl = props.bookingData.provider?.logoUrl;
+    const NO_BACK_PAGES = [Views.SERVICES, Views.AUTH, Views.ERROR];
+    const showBack = !NO_BACK_PAGES.includes(props.view);
+    const providerName = props?.bookingData?.provider?.name ?? '';
+    const logoUrl = props?.bookingData?.provider?.logoUrl;
     let backLink = `/${providerName}`;
     switch (props.view) {
         case Views.SERVICES:
-            backLink = "/";
+            break;
+        case Views.ERROR:
             break;
         case Views.AVAILABILITY:
             backLink = `/${providerName}/services`;
@@ -42,12 +44,14 @@ function CommonHeader(props: any) {
                         <ArrowBackIcon />
                     </IconButton>
                 )}
-                {logoUrl && (
+                {logoUrl && providerName && (
                     <Avatar src={logoUrl} alt={providerName} sx={{ marginRight: 2 }} />
                 )}
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    {providerName}
-                </Typography>
+                {providerName && (
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        {providerName}
+                    </Typography>
+                )}
             </Toolbar>
         </AppBar>
     );
