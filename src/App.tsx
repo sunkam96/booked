@@ -10,6 +10,9 @@ import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router"
 import { BookingData } from './data.ts'
 import './index.css'
+// v2 imports
+import ProvidersV2 from './v2/pages/ProvidersV2.tsx'
+import ErrorV2 from './v2/pages/ErrorV2.tsx'
 
 function App() {
   const [bookingData, setBookingData] = useState(new BookingData(null, null, null, null, null))
@@ -27,6 +30,11 @@ function App() {
         <Route path="/register" element={<RegisterProvider />} />
         <Route path="/error" element={<Error />} />
         <Route path="/auth" element={<Auth />} />
+        {/* V2 routes */}
+        <Route path="/v2/" element={<ProvidersV2/>} />
+        <Route path="/v2/providers" element={<ProvidersV2/>} />     
+        <Route path="/v2/error" element={<ErrorV2 />} />
+
       </Routes>
     </BrowserRouter>
   )
