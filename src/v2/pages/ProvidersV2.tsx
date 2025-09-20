@@ -12,14 +12,36 @@ function SearchInput() {
     )
 }
 
+
+const davidCardProps = {
+    logoUrl: '/barber.webp',
+    price: "$50",
+    duration: "(1hr)",
+    providerName: "David T",
+    serviceName: "Haircut and Beard Trim",
+    location: "Greenpoint, Brooklyn",
+};
+
+const chloeCardProps = {
+    logoUrl: '/chloe.jpg',
+    price: "$75",
+    duration: "(90 mins)",
+    providerName: "Chloe K",
+    serviceName: "Manicure and Pedicure",
+    location: "Williamsburg, Brooklyn",
+};
+
 function ProvidersV2() {
     return (
         <Layout>
             <HeaderV2 />
             <SearchInput />
             <SectionHeader sectionHeaderText="Providers near you"></SectionHeader>
-            <ServiceItemCard />
-            <SectionHeader sectionHeaderText="Signup as a provider"></SectionHeader>
+            <div className="service-item-cards-list-container">
+                <ServiceItemCard {...davidCardProps} />
+                <ServiceItemCard {...chloeCardProps} />
+            </div>
+           <SectionHeader sectionHeaderText="Signup as a provider"></SectionHeader>
         </Layout>
     );
 }
