@@ -33,6 +33,16 @@
     box-shadow: 2px 3px 10px 0 rgba(0, 0, 0, 0.25);
 }
 
+register-provider-form-input-field[type="text"]{
+    text-align: center;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    color: blue;
+}
+
 .upload-profile-picture-container {
     display: flex;
     flex-direction: row;
@@ -89,6 +99,7 @@
     font-family: "Open Sans";
     font-size: 20px;
     font-style: normal;
-    font-weight: 800;
+    font-weight: 700;
     line-height: normal;
 }
+

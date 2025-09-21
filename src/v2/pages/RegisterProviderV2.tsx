@@ -7,7 +7,7 @@ function RegisterProviderFormInput(props: any) {
     return (
         <div className="register-provider-form-input">
             <div className="register-provider-form-input-label-typography">{props.label}</div>
-            <input className="register-provider-form-input-field" type="text" />
+            <input id={props.fieldName} className="register-provider-form-input-field" type="text" />
         </div>
     )
 }
@@ -44,9 +44,9 @@ function RegisterProviderV2() {
         <Layout>
             <HeaderV2 headerLabel="Sign up and start booking appointments today!" />
             <div className="register-provider-form-container">
-                <RegisterProviderFormInput label="Name" />
-                <RegisterProviderFormInput label="Description" />
-                <RegisterProviderFormInput label="Email" />
+                <RegisterProviderFormInput label="Name" fieldName="name" />
+                <RegisterProviderFormInput label="Description" fieldName="description" />
+                <RegisterProviderFormInput label="Email" fieldName="email" />
             </div>
             <UploadProfilePicture />
             <AddService />
