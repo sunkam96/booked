@@ -37,7 +37,6 @@
 
 /* Focus effect for accessibility */
 .service-item-card-container:focus {
-    outline: 2px solid #007bff;
     outline-offset: 2px;
 }
 
