@@ -1,4 +1,4 @@
-import '../common/Common.css';
+import './ErrorV2.css';
 import HeaderV2 from '../common/Header';
 import Layout from '../common/Layout';
 

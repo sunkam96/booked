@@ -1,0 +1,94 @@
+
+.register-provider-form-container {
+     display: flex;
+     flex-direction: column;
+     width: 90%;
+}
+
+.register-provider-form-input {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 120px;
+    padding: 0 10px;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.register-provider-form-input-label-typography {
+    color: #000;
+    font-family: "Open Sans";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.register-provider-form-input-field {
+    height: 55px;
+    flex-shrink: 0;
+    align-self: stretch;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    box-shadow: 2px 3px 10px 0 rgba(0, 0, 0, 0.25);
+}
+
+.upload-profile-picture-container {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 45px;
+    padding: 10px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+.register-provider-typography {
+    color: #000;
+    font-family: "Open Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.add-service-container {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 45px;
+    padding: 10px;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+.register-button-container { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+}
+
+.register-button {
+    display: flex;
+    padding: 11px 44px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 25px;
+    background: #000;
+    box-shadow: 2px 3px 10px 0 rgba(0, 0, 0, 0.25);
+    color: #FFF;
+    text-align: center;
+    font-family: "Open Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
