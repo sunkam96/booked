@@ -1,6 +1,5 @@
 import './Common.css';
 
-
 function SectionHeader(props: any) {
     return (
         <div className="section-header-container">

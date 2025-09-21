@@ -3,6 +3,7 @@ import Layout from '../common/Layout';
 import HeaderV2 from '../common/Header';
 import { SectionHeader } from '../common/Common';
 import ServiceItemCard from '../common/ServiceItemCard';
+import { Link } from "react-router";
 
 function SearchInput() {
     return (
@@ -41,7 +42,7 @@ function ProvidersV2() {
                 <ServiceItemCard {...davidCardProps} />
                 <ServiceItemCard {...chloeCardProps} />
             </div>
-            <a href="/register">Signup as a provider today!</a>
+            <Link to="/v2/register">Signup as a provider today!</Link>
         </Layout>
     );
 }
