@@ -41,7 +41,7 @@ function ProvidersV2() {
                 <ServiceItemCard {...davidCardProps} />
                 <ServiceItemCard {...chloeCardProps} />
             </div>
-           <SectionHeader sectionHeaderText="Signup as a provider"></SectionHeader>
+            <a href="/register">Signup as a provider today!</a>
         </Layout>
     );
 }
