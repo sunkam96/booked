@@ -16,11 +16,11 @@ function HeaderLabel(props: any) {
     )
 }
 
-function HeaderV2() {
+function HeaderV2(props: any) {
     return (
         <div className="header-container">
             <HeaderText headerText="Booked"></HeaderText>
-            <HeaderLabel headerLabel="Book your next haircut and nail appointment now!"></HeaderLabel>
+            {props.headerLabel && <HeaderLabel headerLabel={props.headerLabel}></HeaderLabel>}
         </div>
     )
 }

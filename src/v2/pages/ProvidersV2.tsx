@@ -34,7 +34,7 @@ const chloeCardProps = {
 function ProvidersV2() {
     return (
         <Layout>
-            <HeaderV2 />
+            <HeaderV2 headerLabel="Book your next haircut and nail appointment now!" />
             <SearchInput />
             <SectionHeader sectionHeaderText="Providers near you"></SectionHeader>
             <div className="service-item-cards-list-container">

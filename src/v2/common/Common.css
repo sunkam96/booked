@@ -99,3 +99,23 @@
     font-weight: 700;
     line-height: normal;
 }
+
+.error-message-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    color: red;
+
+}
+
+.error-message-title{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.error-message-description{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+}
