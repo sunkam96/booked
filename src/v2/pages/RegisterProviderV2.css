@@ -117,6 +117,6 @@
 }
 
 .register-button:hover {
-    background: #333;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
