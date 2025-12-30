@@ -14,9 +14,9 @@ function SearchInput() {
     )
 }
 
-function ServiceItemCard(props: any) {
+function ProviderItemCard(props: any) {
     const handleClick = () => {
-        console.log('Service item clicked!');
+        console.log('Provider clicked');
     };
 
     const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -28,26 +28,26 @@ function ServiceItemCard(props: any) {
 
     return (
         <div 
-            className="service-item-card-container"
+            className="provider-item-card-container"
             onClick={handleClick}
             onKeyDown={handleKeyDown}
             tabIndex={0}
             role="button"
             aria-label="Select service"
         >
-            <div className="service-item-logo" style={{
+            <div className="provider-item-logo" style={{
                     backgroundImage: `url('${props.logoUrl}')`
                 }}></div>
-            <div className="service-item-content">
-                {/* <div className="service-item-content-pricing">
-                    <div className="service-item-content-price-typography">{props.price}</div>
-                    <div className="service-item-content-duration-typography">{props.duration}</div>
+            <div className="provider-item-content">
+                {/* <div className="provider-item-content-pricing">
+                    <div className="provider-item-content-price-typography">{props.price}</div>
+                    <div className="provider-item-content-duration-typography">{props.duration}</div>
                 </div> */}
-                {/* <div className="service-item-content-divider"></div> */}
-                <div className="service-item-content-description">
-                    <div className="service-item-content-description-provider-name-typography">{props.providerName} - {props.description}</div>
-                    {/* <div className="service-item-content-description-service-name-typography">{props.serviceName}</div> */}
-                    <div className="service-item-content-description-service-details-typography">{props.location}</div>
+                {/* <div className="provider-item-content-divider"></div> */}
+                <div className="provider-item-content-description">
+                    <div className="provider-item-content-description-service-name-typography">{props.providerName} - {props.description}</div>
+                    {/* <div className="provider-item-content-description-service-name-typography">{props.serviceName}</div> */}
+                    <div className="provider-item-content-description-service-details-typography">{props.location}</div>
                 </div>
             </div>
         </div>
@@ -61,7 +61,7 @@ function ProvidersV2() {
             <HeaderV2 headerLabel="Book your next haircut and nail appointment now!" />
             <SearchInput />
             <SectionHeader sectionHeaderText="Providers near you"></SectionHeader>
-            <div className="service-item-cards-list-container">
+            <div className="provider-item-cards-list-container">
                 {getAllProviders()
                     .map((provider) => {
                         return {
@@ -72,7 +72,7 @@ function ProvidersV2() {
                             }
                         })
                     .map((props, index) => (
-                        <ServiceItemCard key={index} {...props} />))}
+                        <ProviderItemCard key={index} {...props} />))}
             </div>
             <Link to="/v2/register">Signup as a provider today!</Link>
         </Layout>

@@ -27,7 +27,7 @@
         "phone": "949-400-4040",
         "description": "Certified dietician",
         "location": "Minneapolis, MN",
-        "logoUrl": "/barber.webp",
+        "logoUrl": "/chloe.jpg",
         "services": [
             {
                 "name": "Nutrition Consultation",
@@ -93,7 +93,7 @@
         "phone": "949-400-7070",
         "description": "Drum instructor",
         "location": "Austin, TX",
-        "logoUrl": "/barber.webp",
+        "logoUrl": "/chloe.jpg",
         "services": [
             {
                 "name": "Beginner Drum Lessons",

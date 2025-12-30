@@ -1,11 +1,11 @@
 
-.service-item-cards-list-container{
+.provider-item-cards-list-container{
     display:flex;
     flex-direction: column;
     width: 100%;
 }
 
-.service-item-card-container {
+.provider-item-card-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,24 +24,24 @@
 }
 
 /* Hover effect */
-.service-item-card-container:hover {
+.provider-item-card-container:hover {
     transform: translateY(-2px);
     box-shadow: 2px 5px 15px 0 rgba(0, 0, 0, 0.3);
 }
 
 /* Pressed (active) effect */
-.service-item-card-container:active {
+.provider-item-card-container:active {
     transform: translateY(1px) scale(0.98);
     box-shadow: 1px 2px 5px 0 rgba(0, 0, 0, 0.2);
     background: #f8f8f8;
 }
 
 /* Focus effect for accessibility */
-.service-item-card-container:focus {
+.provider-item-card-container:focus {
     outline-offset: 2px;
 }
 
-.service-item-logo {
+.provider-item-logo {
     height: 70%;
     width: 100%;
     /* background-image: url('../../assets/barber.webp'); */
@@ -53,11 +53,11 @@
 }
 
 /* Slightly darken the image when pressed */
-.service-item-card-container:active .service-item-logo {
+.provider-item-card-container:active .provider-item-logo {
     filter: brightness(0.95);
 }
 
-.service-item-content {
+.provider-item-content {
     height: 30%;
     width: 100%;
     display: flex;
@@ -65,7 +65,7 @@
     align-items: center;
 }
 
-.service-item-content-pricing {
+.provider-item-content-pricing {
     display: flex;
     flex-direction: column;
     width: 30%;
@@ -73,13 +73,13 @@
     justify-content: center;
 }
 
-.service-item-content-divider {
+.provider-item-content-divider {
     width: 1px;
     height: 50%;
     background-color: black;
 }
 
-.service-item-content-description {
+.provider-item-content-description {
     display: flex;
     flex-direction: column;
     width: 70%;
@@ -88,7 +88,7 @@
     justify-content: center;
 }
 
-.service-item-content-price-typography {
+.provider-item-content-price-typography {
     color: #000;
     text-align: center;
     font-family: "Open Sans";
@@ -98,7 +98,7 @@
     line-height: normal;
 }
 
-.service-item-content-duration-typography {
+.provider-item-content-duration-typography {
     color: #000;
     text-align: center;
     font-family: "Open Sans";
@@ -108,7 +108,7 @@
     line-height: normal;
 }
 
-.service-item-content-description-provider-name-typography{
+.provider-item-content-description-provider-name-typography{
     color: #000;
     text-align: left;
     font-family: "Open Sans";
@@ -118,7 +118,7 @@
     line-height: normal;
 }
 
-.service-item-content-description-service-name-typography{
+.provider-item-content-description-service-name-typography{
     color: #000;
     text-align: left;
     font-family: "Open Sans";
@@ -128,7 +128,7 @@
     line-height: normal;
 }
 
-.service-item-content-description-service-location-typography{
+.provider-item-content-description-service-location-typography{
     color: #000;
     text-align: left;
     font-family: "Open Sans";
