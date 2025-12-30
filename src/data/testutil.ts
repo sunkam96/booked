@@ -13,7 +13,8 @@ interface TestDataProvider {
     email: string;
     phone: string;
     description: string;
-    logo_url: string;
+    location: string;
+    logoUrl: string;
     services: TestDataServiceItem[];
 }
 
@@ -30,9 +31,10 @@ export function parseTestDataToProviders(): Provider[] {
 
         return new Provider(
             providerData.name,
-            providerData.logo_url,
+            providerData.logoUrl,
             providerData.description,
             providerData.email,
+            providerData.location,
             serviceItems
         );
     });

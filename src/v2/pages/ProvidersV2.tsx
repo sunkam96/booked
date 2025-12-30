@@ -3,6 +3,8 @@ import Layout from '../common/Layout';
 import HeaderV2 from '../common/Header';
 import { SectionHeader } from '../common/Common';
 import { Link } from "react-router";
+import { getAllProviders } from '../../data/testutil';
+import { Description } from '@mui/icons-material';
 
 function SearchInput() {
     return (
@@ -37,14 +39,14 @@ function ServiceItemCard(props: any) {
                     backgroundImage: `url('${props.logoUrl}')`
                 }}></div>
             <div className="service-item-content">
-                <div className="service-item-content-pricing">
+                {/* <div className="service-item-content-pricing">
                     <div className="service-item-content-price-typography">{props.price}</div>
                     <div className="service-item-content-duration-typography">{props.duration}</div>
-                </div>
-                <div className="service-item-content-divider"></div>
+                </div> */}
+                {/* <div className="service-item-content-divider"></div> */}
                 <div className="service-item-content-description">
-                    <div className="service-item-content-description-provider-name-typography">{props.providerName}</div>
-                    <div className="service-item-content-description-service-name-typography">{props.serviceName}</div>
+                    <div className="service-item-content-description-provider-name-typography">{props.providerName} - {props.description}</div>
+                    {/* <div className="service-item-content-description-service-name-typography">{props.serviceName}</div> */}
                     <div className="service-item-content-description-service-details-typography">{props.location}</div>
                 </div>
             </div>
@@ -53,24 +55,6 @@ function ServiceItemCard(props: any) {
 }
 
 
-const davidCardProps = {
-    logoUrl: '/barber.webp',
-    price: "$50",
-    duration: "(1hr)",
-    providerName: "David T",
-    serviceName: "Haircut and Beard Trim",
-    location: "Greenpoint, Brooklyn",
-};
-
-const chloeCardProps = {
-    logoUrl: '/chloe.jpg',
-    price: "$75",
-    duration: "(90 mins)",
-    providerName: "Chloe K",
-    serviceName: "Manicure and Pedicure",
-    location: "Williamsburg, Brooklyn",
-};
-
 function ProvidersV2() {
     return (
         <Layout>
@@ -78,8 +62,17 @@ function ProvidersV2() {
             <SearchInput />
             <SectionHeader sectionHeaderText="Providers near you"></SectionHeader>
             <div className="service-item-cards-list-container">
-                <ServiceItemCard {...davidCardProps} />
-                <ServiceItemCard {...chloeCardProps} />
+                {getAllProviders()
+                    .map((provider) => {
+                        return {
+                                logoUrl: provider.logoUrl,
+                                providerName: provider.name,
+                                description: provider.description,
+                                location: provider.location
+                            }
+                        })
+                    .map((props, index) => (
+                        <ServiceItemCard key={index} {...props} />))}
             </div>
             <Link to="/v2/register">Signup as a provider today!</Link>
         </Layout>

@@ -39,6 +39,7 @@ export class Provider{
     private _logoUrl: string | null;
     private _description: string | null;
     private _email: string | null;
+    private _location: string | null;
     private _services: ServiceItem[] | null;
 
     constructor(
@@ -46,12 +47,14 @@ export class Provider{
         logoUrl: string | null,
         description: string | null,
         email: string | null,
+        location: string | null,
         services: ServiceItem[] | null
     ) {
         this._name = name;
         this._logoUrl = logoUrl;
         this._description = description;
         this._email = email;
+        this._location = location;
         this._services = services;
     }
 
@@ -85,6 +88,14 @@ export class Provider{
 
     set email(value: string | null) {
         this._email = value;
+    }
+
+    get location(): string | null {
+        return this._location;
+    }
+
+    set location(value: string | null) {
+        this._location = value;
     }
 
     get services(): ServiceItem[] | null {

@@ -4,7 +4,8 @@
         "email": "cho@tutor.com",
         "phone": "949-400-3030",
         "description": "Math tutor",
-        "logo_url": "https://firebasestorage.googleapis.com/v0/b/booked-8305e.firebasestorage.app/o/images%2Fdefault_hero%20copy.png?alt=media&token=0df528b5-ab74-4888-8df1-8917d4d8f474",
+        "location": "New York, NY",
+        "logoUrl": "/barber.webp",
         "services": [
             {
                 "name": "Algebra Tutoring",
@@ -25,7 +26,8 @@
         "email": "sweety@dietician.com",
         "phone": "949-400-4040",
         "description": "Certified dietician",
-        "logo_url": "https://firebasestorage.googleapis.com/v0/b/booked-8305e.firebasestorage.app/o/images%2Fdefault_hero%20copy.png?alt=media&token=0df528b5-ab74-4888-8df1-8917d4d8f474",
+        "location": "Minneapolis, MN",
+        "logoUrl": "/barber.webp",
         "services": [
             {
                 "name": "Nutrition Consultation",
@@ -46,7 +48,8 @@
         "email": "kiran@designer.com",
         "phone": "949-400-5050",
         "description": "Graphic designer in Figma",
-        "logo_url": "https://firebasestorage.googleapis.com/v0/b/booked-8305e.firebasestorage.app/o/images%2Fdefault_hero%20copy.png?alt=media&token=0df528b5-ab74-4888-8df1-8917d4d8f474",
+        "location": "San Francisco, CA",
+        "logoUrl": "/barber.webp",
         "services": [
             {
                 "name": "Logo Design",
@@ -67,7 +70,8 @@
         "email": "sairam@accountant.com",
         "phone": "949-400-6060",
         "description": "Professional accountant",
-        "logo_url": "https://firebasestorage.googleapis.com/v0/b/booked-8305e.firebasestorage.app/o/images%2Fdefault_hero%20copy.png?alt=media&token=0df528b5-ab74-4888-8df1-8917d4d8f474",
+        "location": "Chicago, IL",
+        "logoUrl": "/barber.webp",
         "services": [
             {
                 "name": "Tax Preparation",
@@ -88,7 +92,8 @@
         "email": "drummer",
         "phone": "949-400-7070",
         "description": "Drum instructor",
-        "logo_url": "https://firebasestorage.googleapis.com/v0/b/booked-8305e.firebasestorage.app/o/images%2Fdefault_hero%20copy.png?alt=media&token=0df528b5-ab74-4888-8df1-8917d4d8f474",
+        "location": "Austin, TX",
+        "logoUrl": "/barber.webp",
         "services": [
             {
                 "name": "Beginner Drum Lessons",
