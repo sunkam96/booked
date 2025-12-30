@@ -1,7 +1,7 @@
 [
     {
-        "name": "sai",
-        "email": "sai@tutor.com",
+        "name": "cho",
+        "email": "cho@tutor.com",
         "phone": "949-400-3030",
         "description": "Math tutor",
         "logo_url": "https://firebasestorage.googleapis.com/v0/b/booked-8305e.firebasestorage.app/o/images%2Fdefault_hero%20copy.png?alt=media&token=0df528b5-ab74-4888-8df1-8917d4d8f474",
@@ -59,6 +59,48 @@
                 "price": 500,
                 "duration": 480,
                 "description": "Comprehensive brand identity design."
+            }
+        ]
+    },
+    {
+        "name": "sairam",
+        "email": "sairam@accountant.com",
+        "phone": "949-400-6060",
+        "description": "Professional accountant",
+        "logo_url": "https://firebasestorage.googleapis.com/v0/b/booked-8305e.firebasestorage.app/o/images%2Fdefault_hero%20copy.png?alt=media&token=0df528b5-ab74-4888-8df1-8917d4d8f474",
+        "services": [
+            {
+                "name": "Tax Preparation",
+                "price": 300,
+                "duration": 120,
+                "description": "Comprehensive tax preparation services."
+            },
+            {
+                "name": "Financial Consulting",
+                "price": 250,
+                "duration": 90,
+                "description": "Expert financial consulting services."
+            }
+        ]
+    },
+    {
+        "name": "neha",
+        "email": "drummer",
+        "phone": "949-400-7070",
+        "description": "Drum instructor",
+        "logo_url": "https://firebasestorage.googleapis.com/v0/b/booked-8305e.firebasestorage.app/o/images%2Fdefault_hero%20copy.png?alt=media&token=0df528b5-ab74-4888-8df1-8917d4d8f474",
+        "services": [
+            {
+                "name": "Beginner Drum Lessons",
+                "price": 60,
+                "duration": 60,
+                "description": "Introductory drum lessons for beginners."
+            },
+            {
+                "name": "Advanced Drum Techniques",
+                "price": 90,
+                "duration": 60,
+                "description": "Advanced techniques for experienced drummers."
             }
         ]
     }
