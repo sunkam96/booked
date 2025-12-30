@@ -14,6 +14,7 @@ import './index.css'
 import ProvidersV2 from './v2/pages/ProvidersV2.tsx'
 import ErrorV2 from './v2/pages/ErrorV2.tsx'
 import RegisterProviderV2 from './v2/pages/RegisterProviderV2.tsx'
+import ServicesV2 from './v2/pages/ServicesV2.tsx'
 
 function App() {
   const [bookingData, setBookingData] = useState(new BookingData(null, null, null, null, null))
@@ -36,6 +37,8 @@ function App() {
         <Route path="/v2/providers" element={<ProvidersV2/>} />     
         <Route path="/v2/error" element={<ErrorV2 />} />
         <Route path="/v2/register" element={<RegisterProviderV2 />} />
+        <Route path="/v2/:providerName" element={<ServicesV2/>} />
+        <Route path="/v2/:providerName/services" element={<ServicesV2/>} />
 
       </Routes>
     </BrowserRouter>

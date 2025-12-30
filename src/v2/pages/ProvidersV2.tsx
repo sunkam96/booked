@@ -2,7 +2,7 @@ import './ProvidersV2.css';
 import Layout from '../common/Layout';
 import HeaderV2 from '../common/Header';
 import { SectionHeader } from '../common/Common';
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { getAllProviders } from '../../data/testutil';
 import { Description } from '@mui/icons-material';
 
@@ -15,8 +15,10 @@ function SearchInput() {
 }
 
 function ProviderItemCard(props: any) {
+    const navigate = useNavigate();
+
     const handleClick = () => {
-        console.log('Provider clicked');
+        navigate(`/v2/${props.providerName}/services`);
     };
 
     const handleKeyDown = (event: React.KeyboardEvent) => {
