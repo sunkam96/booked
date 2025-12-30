@@ -1,0 +1,65 @@
+[
+    {
+        "name": "sai",
+        "email": "sai@tutor.com",
+        "phone": "949-400-3030",
+        "description": "Math tutor",
+        "logo_url": "https://firebasestorage.googleapis.com/v0/b/booked-8305e.firebasestorage.app/o/images%2Fdefault_hero%20copy.png?alt=media&token=0df528b5-ab74-4888-8df1-8917d4d8f474",
+        "services": [
+            {
+                "name": "Algebra Tutoring",
+                "price": 50,
+                "duration": 60,
+                "description": "One-on-one algebra tutoring sessions."
+            },
+            {
+                "name": "Calculus Tutoring",
+                "price": 70,
+                "duration": 60,
+                "description": "Personalized calculus tutoring for all levels."
+            }
+        ]
+    },
+    {
+        "name": "sweety",
+        "email": "sweety@dietician.com",
+        "phone": "949-400-4040",
+        "description": "Certified dietician",
+        "logo_url": "https://firebasestorage.googleapis.com/v0/b/booked-8305e.firebasestorage.app/o/images%2Fdefault_hero%20copy.png?alt=media&token=0df528b5-ab74-4888-8df1-8917d4d8f474",
+        "services": [
+            {
+                "name": "Nutrition Consultation",
+                "price": 100,
+                "duration": 60,
+                "description": "Personalized nutrition plans and consultations."
+            },
+            {
+                "name": "Weight Management Program",
+                "price": 200,
+                "duration": 120,
+                "description": "Comprehensive weight management program."
+            }
+        ]
+    },
+    {
+        "name": "kiran",
+        "email": "kiran@designer.com",
+        "phone": "949-400-5050",
+        "description": "Graphic designer in Figma",
+        "logo_url": "https://firebasestorage.googleapis.com/v0/b/booked-8305e.firebasestorage.app/o/images%2Fdefault_hero%20copy.png?alt=media&token=0df528b5-ab74-4888-8df1-8917d4d8f474",
+        "services": [
+            {
+                "name": "Logo Design",
+                "price": 150,
+                "duration": 180,
+                "description": "Custom logo design services."
+            },
+            {
+                "name": "Brand Identity Package",
+                "price": 500,
+                "duration": 480,
+                "description": "Comprehensive brand identity design."
+            }
+        ]
+    }
+]
