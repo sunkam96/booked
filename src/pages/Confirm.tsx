@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from "react-router";
-import { Customer } from '../data';
+import { Customer } from '../data/data';
 import { writeBookingData } from '../firestore';
 import Views from '../common/util';
 

@@ -1,5 +1,5 @@
 import '../App.css'
-import {ServiceItem, BookingData} from '../data';
+import {ServiceItem, BookingData} from '../data/data';
 
 import {CommonHeader, CommonLabel} from '../common/Common';
 import Card from '@mui/material/Card';

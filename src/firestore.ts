@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { addDoc, getFirestore, getDocs, collection, query, where } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL, getStorage} from "firebase/storage";
-import { BookingData, Provider, ServiceItem } from "./data";
+import { BookingData, Provider, ServiceItem } from "./data/data";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,

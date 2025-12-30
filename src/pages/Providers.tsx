@@ -1,6 +1,6 @@
 import { fetchAllProviders } from '../firestore';
 import { useEffect, useState } from 'react';
-import { Provider } from '../data';
+import { Provider } from '../data/data';
 import { Link } from "react-router";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';

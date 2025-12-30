@@ -8,7 +8,7 @@ import Auth from './pages/Auth.tsx'
 import Error from './pages/Error.tsx'
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router"
-import { BookingData } from './data.ts'
+import { BookingData } from './data/data.ts'
 import './index.css'
 // v2 imports
 import ProvidersV2 from './v2/pages/ProvidersV2.tsx'

@@ -6,7 +6,7 @@ import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
 import {Link, useNavigate} from "react-router";
 import {useState} from 'react'
-import {Provider, ServiceItem} from '../data';
+import {Provider, ServiceItem} from '../data/data';
 import {writeNewProvider, saveProviderLogoImage} from '../firestore';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
